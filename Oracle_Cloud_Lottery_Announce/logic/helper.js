@@ -149,8 +149,6 @@ const getTotalSelectedNumber = async (
 };
 const wait = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
-announce();
-
 module.exports = {
   requestVRFNumber,
   announce,
