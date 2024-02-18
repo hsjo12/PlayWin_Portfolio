@@ -59,6 +59,9 @@ export const metadata = {
   icons: {
     icon: "/favicon/favicon.png", // /public path
   },
+  openGraph: {
+    images: "/ogImage/ogImage.png",
+  },
 };
 
 export default function RootLayout({ children }) {
