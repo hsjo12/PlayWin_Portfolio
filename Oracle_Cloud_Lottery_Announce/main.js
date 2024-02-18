@@ -1,8 +1,8 @@
-const { requestVRFNumber } = require("./logic/helper");
+const { requestVRFNumber, announce } = require("./logic/helper");
 
 /// Request Random
 cron.schedule(
-  "25 * * * *",
+  "51 0 * * *",
   async () => {
     try {
       console.log("START REQUEST");
@@ -19,11 +19,11 @@ cron.schedule(
 
 /// Announce
 cron.schedule(
-  "35 * * * *",
+  "59 0 * * *",
   async () => {
     try {
       console.log("REQUEST ANNOUNCEMENT");
-      await announce(klaytn_rpc, winningNumber);
+      await announce();
       console.log("ANNOUNCEMENT");
     } catch (error) {
       console.log(error);
