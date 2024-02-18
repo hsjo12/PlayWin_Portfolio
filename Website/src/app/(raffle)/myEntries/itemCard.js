@@ -78,12 +78,12 @@ export default function ItemCard({ info }) {
 
   if (isLoading)
     return (
-      <div className="flex flex-col justify-center items-center w-full h-full border-2">
+      <div className="flex flex-col justify-center items-center w-full  border-2">
         <Loading />
       </div>
     );
   return (
-    <div className="card xSmallText  flex flex-col justify-center w-full h-full gap-2 ">
+    <div className="card xSmallText  flex flex-col justify-center w-full  gap-2 ">
       {metadata.image == null ? (
         <div className="min-h-[150px] xs:min-h-[200px] flex flex-col justify-center items-center">
           <Loading />
