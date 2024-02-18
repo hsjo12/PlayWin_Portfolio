@@ -19,7 +19,7 @@
   @apply font-teko tracking-[0.2rem] xl:text-[2rem] md:text-[1.3rem] text-[1rem];
 }
 .btnText {
-  @apply font-bebas_neue  tracking-widest xl:text-[2rem] sm:text-[1.5rem] text-[1rem];
+  @apply font-bebas_neue  tracking-widest xl:text-[2rem] sm:text-[1.5rem] text-[1.3rem];
 }
 
 .emptyText {

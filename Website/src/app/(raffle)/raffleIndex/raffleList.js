@@ -112,7 +112,7 @@ export default function RaffleList() {
     return <Empty />;
   } else {
     return (
-      <div className="w-full h-full grid grid-cols-2  md:grid-cols-4 xl:grid-cols-6 justify-start gap-5">
+      <div className="w-full grid grid-cols-2  md:grid-cols-4 xl:grid-cols-6 justify-start gap-5">
         {raffleList.map((v, i) => {
           return <ItemCard key={i} info={v} />;
         })}
