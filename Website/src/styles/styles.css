@@ -1,0 +1,344 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* ////////////////////////////////////////////////////////////////////////// */
+/* TEXT */
+.mainTitle {
+  @apply font-bebas_neue tracking-[0.4rem] xl:text-[9rem] md:text-[5rem]   sm:text-[4.5rem] text-[3rem];
+}
+.subTitle {
+  @apply text-highlight-color font-bebas_neue tracking-[0.4rem] xl:text-[2.5rem] md:text-[1.8rem] text-[1.5rem];
+}
+.infoText {
+  @apply font-teko tracking-[0.2rem] xl:text-[2.5rem] md:text-[1.8rem] text-[1.5rem];
+}
+.biggerInfoText {
+  @apply font-teko tracking-[0.2rem] xl:text-[2.2rem] md:text-[2rem] text-[2rem];
+}
+.smallInfoText {
+  @apply font-teko tracking-[0.2rem] xl:text-[2rem] md:text-[1.3rem] text-[1rem];
+}
+.btnText {
+  @apply font-bebas_neue  tracking-widest xl:text-[2rem] sm:text-[1.5rem] text-[1rem];
+}
+
+.emptyText {
+  @apply font-teko md:tracking-[2rem] tracking-[1rem] md:text-[6rem] xs:text-[4rem] text-[3rem];
+}
+
+.cardText {
+  @apply font-bebas_neue xl:text-[1.8rem] md:text-[1.5rem] text-[1.3rem];
+}
+
+.lottoSubTitle {
+  @apply xl:text-[4rem] text-[3rem]  text-[#ffc13c] font-bebas_neue tracking-[0.2rem];
+}
+.lottoText {
+  @apply xl:text-[2rem] md:text-[2.5rem] text-[2rem] font-bebas_neue tracking-[0.2rem];
+}
+.prizeInfoText {
+  @apply xl:text-[2rem] md:text-[2rem] text-lg font-bebas_neue tracking-[0.2rem];
+}
+
+/* ////////////////////////////////////////////////////////////////////////// */
+/* BUTTON */
+.btn {
+  width: 100%;
+  border: 3px solid whitesmoke;
+  background-color: none;
+  border-radius: 0.375rem;
+  letter-spacing: 0.15rem;
+  @apply transition-colors outline-main-color tracking-[0.05rem];
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 10px 5px #3c83f6;
+  background-color: transparent;
+}
+.btn:focus {
+  outline: none;
+}
+.connectButton {
+  background-color: #3c83f6;
+  color: whitesmoke;
+  border-radius: 0.375rem;
+  letter-spacing: 0.15rem;
+  @apply !transition-colors;
+}
+.connectButton:hover {
+  box-shadow: 0px 0px 10px 5px #3c83f6;
+  color: #3c83f6;
+  background-color: transparent;
+  letter-spacing: 0.15rem;
+}
+.connectButton:focus {
+  outline: none;
+}
+.disconnectButton {
+  background-color: #f63c3c;
+  color: whitesmoke;
+  letter-spacing: 0.15rem;
+  border-radius: 0.375rem;
+  @apply !transition-colors;
+}
+
+.disconnectButton:hover {
+  box-shadow: 0px 0px 10px 5px #f63c3c;
+  color: #f63c3c;
+  background-color: transparent;
+}
+.disconnectButton:focus {
+  outline: none;
+}
+
+.textBtn {
+  padding: 0;
+  background-color: transparent;
+  color: whitesmoke;
+  letter-spacing: 0.15rem;
+  @apply transition-colors;
+}
+
+.textBtn:hover {
+  text-shadow: #ffffff 1px 0 20px;
+  color: #3c83f6;
+  background-color: none;
+}
+.textBtn:focus {
+  outline: none;
+}
+.cardBtn {
+  width: 100%;
+  background-color: #555555;
+  border-radius: 0.375rem;
+  letter-spacing: 0.15rem;
+}
+.cardBtn:hover {
+  box-shadow: 0px 0px 5px 2px #3c83f6;
+  background-color: black;
+  color: #3c83f6;
+}
+.cardBtn:focus {
+  outline: none;
+}
+.refundBtn {
+  width: 100%;
+  background-color: #db8e1a;
+  border-radius: 0.375rem;
+  letter-spacing: 0.15rem;
+}
+.refundBtn:hover {
+  box-shadow: 0px 0px 5px 2px #db8e1a;
+  background-color: black;
+  color: #db8e1a;
+}
+.refundBtn:focus {
+  outline: none;
+}
+.lottoBtn {
+  width: 100%;
+  background-color: #db8e1a;
+  border-radius: 0.375rem;
+  letter-spacing: 0.15rem;
+}
+.lottoBtn:hover {
+  box-shadow: 0px 0px 5px 2px #db8e1a;
+  background-color: transparent;
+  color: whitesmoke;
+}
+.lottoBtn:focus {
+  outline: none;
+}
+.lottoNumBtn {
+  box-shadow: 0px 4px 0px 0px #db8e1a, 0px -4px 0px 0px #db8e1a;
+  color: whitesmoke;
+  @apply transition-colors rounded-md;
+}
+
+.lottoNumBtn:hover {
+  box-shadow: 0px 4px 0px 0px #db8e1a, 0px -4px 0px 0px #db8e1a;
+  background-color: #db8e1a;
+  color: whitesmoke;
+}
+.lottoNumBtn:focus {
+  outline: none;
+}
+.lottoNumBtnSelected {
+  box-shadow: 0px 4px 0px 0px #db8e1a, 0px -4px 0px 0px #db8e1a;
+  background-color: #db8e1a;
+  color: whitesmoke;
+  @apply transition-colors rounded-md;
+}
+.lottoNumBtnSelected:focus {
+  outline: none;
+}
+/* ////////////////////////////////////////////////////////////////////////// */
+/* BOX */
+.card {
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid whitesmoke;
+  background-color: none;
+  border-radius: 0.375rem;
+  background-color: #040211;
+}
+.featureCard {
+  width: 100%;
+  border: 1px solid whitesmoke;
+  background-color: none;
+  background-color: #222222;
+  padding: 1rem;
+}
+.lotteryInformationCard {
+  width: 100%;
+  border: 1px solid whitesmoke;
+  background-color: #1f1c1ce5;
+  padding: 1rem;
+}
+.smallLotteryCard {
+  width: 100%;
+  background-color: #5353534b;
+  border: 1px dashed whitesmoke;
+}
+.lotterySmallInformationCard {
+  width: 100%;
+  padding: 0;
+  background-color: #1f1c1ce5;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  @apply text-xl sm:text-3xl;
+}
+.lotterySmallInformationCardHead {
+  @apply text-2xl sm:text-4xl  font-[500] font-bebas_neue bg-[#db8e1a] w-full  text-[whitesmoke]  rounded-t-lg text-left p-2 tracking-[0.1rem];
+}
+.menuBox {
+  @apply fixed top-0 left-0 w-screen min-h-screen bg-[#01000c98];
+}
+.toastMessage {
+  min-width: 400px;
+  background-color: #191b1d;
+  color: #f5f5f5;
+  border: 1px solid #84b9ff;
+  border-radius: 0.375rem;
+  box-shadow: 0px 2px 7px 3px #63636363;
+
+  @apply font-teko font-[500] xl:text-[1.3rem] text-[1.1rem];
+}
+.Toastify__close-button--light {
+  opacity: 1;
+  color: #f5f5f5;
+}
+
+.inputStyle {
+  width: 100%;
+  color: whitesmoke;
+  border: 3px solid whitesmoke;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  background-color: #63636363;
+  outline: none;
+}
+
+/* ////////////////////////////////////////////////////////////////////////// */
+/* IMAGE */
+.raffleInfoImage {
+  @apply w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]  md:w-[500px] md:h-[500px];
+}
+.prizeImageSize {
+  @apply w-[150px] h-[150px] sm:w-[200px] sm:h-[200px]  md:w-[250px] md:h-[250px];
+}
+/* ////////////////////////////////////////////////////////////////////////// */
+/* SELECT */
+.selectStyle > select {
+  background-color: #191b1d;
+  border: 1px solid whitesmoke;
+  @apply infoText;
+}
+
+.selectStyle > select:focus {
+  outline: none;
+}
+/* ////////////////////////////////////////////////////////////////////////// */
+/* SCROLL */
+.customizedScrollbar::-webkit-scrollbar {
+  display: block;
+  width: 10px;
+}
+.customizedScrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.customizedScrollbar::-webkit-scrollbar-thumb {
+  background: #002868;
+  box-shadow: -1px 1px 3px 0px #3c83f6;
+}
+
+.customizedLotteryScrollbar::-webkit-scrollbar {
+  display: block;
+  width: 10px;
+}
+.customizedLotteryScrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.customizedLotteryScrollbar::-webkit-scrollbar-thumb {
+  background: #9e9e9ebb;
+  box-shadow: -1px 1px 3px 0px whitesmoke;
+}
+/* ////////////////////////////////////////////////////////////////////////// */
+/* INFO ICON */
+.info {
+  background-color: #002868;
+}
+
+/* ////////////////////////////////////////////////////////////////////////// */
+/* ANIMATION */
+@layer removeIncDecArrow {
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+.zoomInAndOut {
+  animation: zoomInAndOut 2s linear infinite;
+}
+
+.loader {
+  @apply w-10 h-10 ease-linear border-4 border-gray-200 rounded-full;
+  border-top-color: #3c83f6;
+  animation: spinner 1.2s linear infinite;
+}
+.smallLoader {
+  @apply w-8 h-8 ease-linear border-4 border-gray-200 rounded-full;
+  border-top-color: #3c83f6;
+  animation: spinner 1.2s linear infinite;
+}
+
+.hugeLoader {
+  @apply w-20 h-20 ease-linear border-8 border-gray-200 rounded-full;
+  border-top-color: #3c83f6;
+  animation: spinner 1.2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zoomInAndOut {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}

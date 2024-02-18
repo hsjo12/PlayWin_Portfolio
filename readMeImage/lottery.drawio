@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net" modified="2024-02-17T07:17:30.226Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36" etag="ZKyK9pOq73pSM-kOJxSV" version="23.1.5" type="device">
+  <diagram name="페이지-1" id="IYdwd-aqFpSOD7ixOjAv">
+    <mxGraphModel dx="1434" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Participants&lt;/font&gt;&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="210" y="270" width="50" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-2" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b&gt;Lottery.sol&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="650" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-13" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;buy tickets&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="280" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-14" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b&gt;Chainlink VRF&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="194" y="500" width="219" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-15" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b&gt;Oracle cloud server&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="194" y="650" width="300" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-16" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="220" y="643" as="sourcePoint" />
+            <mxPoint x="220" y="573" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-17" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="680" as="sourcePoint" />
+            <mxPoint x="620" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-19" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Request &amp;amp; receive a random number&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="230" y="585" width="330" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-20" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="285" y="330" as="sourcePoint" />
+            <mxPoint x="630" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-21" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;USER&lt;/font&gt;&lt;/b&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="210" y="980" width="50" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-24" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Check deadline&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="620" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-25" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Compute the number of each place winners, and send data to Lottery.sol&lt;/b&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="370" y="730" width="360" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-26" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b&gt;Lottery.sol&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="990" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-27" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b&gt;Lottery.sol&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="295" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-28" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Claim a prize in FUSDT&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="345" y="970" width="230" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-29" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="1020" as="sourcePoint" />
+            <mxPoint x="625" y="1020" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-30" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;ClaimVault.sol&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="950" y="990" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-31" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b&gt;ClaimVault.sol&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="519" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-33" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;send 70% of total sales for prizes&amp;nbsp;&amp;nbsp;&lt;/b&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="900" y="480" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-35" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Send the amount of claimed FUSDT&lt;/font&gt;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="710" y="950" width="315" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-36" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="940" y="1020" as="sourcePoint" />
+            <mxPoint x="830" y="1020" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-37" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b&gt;FirstPlacePrizeVault.sol&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="830" y="1080" width="330" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-38" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="920" y="1070" as="sourcePoint" />
+            <mxPoint x="840" y="1030" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-39" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b&gt;TeamVault.sol&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="660" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-40" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;&lt;b&gt;RewardVault.sol&lt;br&gt;&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="800" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-42" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="810" y="679.6" as="sourcePoint" />
+            <mxPoint x="1120" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-43" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="689.6" as="sourcePoint" />
+            <mxPoint x="1110" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-44" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Send 10% of total sales for the team&lt;/b&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="950" y="630" width="380" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-45" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="820" y="720" as="sourcePoint" />
+            <mxPoint x="1090" y="840" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QQxmPVQYkb8vM3tKg4sN-46" value="&lt;span style=&quot;font-size: 18px;&quot;&gt;&lt;b&gt;Send 20% of total sales for staking users&lt;/b&gt;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="950" y="750" width="380" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

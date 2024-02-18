@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "cron": "^3.1.6",
+    "dotenv": "^16.4.3",
+    "ethers": "^6.11.0",
+    "ethersjs": "^0.0.1-security",
+    "init": "^0.1.2",
+    "secure-env": "^1.2.0"
+  }
+}
