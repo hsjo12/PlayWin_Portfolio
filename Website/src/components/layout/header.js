@@ -55,18 +55,18 @@ export default function Header() {
     return (
       <div className=" flex flex-col    mx-auto w-screen left-0 top-0 fixed items-center justify-end bg-[#00000096]">
         <div className=" mx-auto w-[90%] grid grid-cols-2 border-main-color border-b-2 pl-1 pr-1 tracking-[0.15rem]">
-          <button className=" flex flex-col justify-center  items-start w-full h-full  largeText tracking-[0.3rem]">
+          <button className=" flex flex-col justify-center  items-start w-full h-full tracking-[0.3rem]">
             <Link href="/">PLAYWIN</Link>
           </button>
 
           <button
             onClick={() => setOpen(true)}
-            className="textBtn flex flex-col justify-center  items-end w-full h-full  largeText"
+            className="flex flex-col justify-center  items-end w-full h-full"
           >
             <FiAlignJustify size="2.5rem" className="zoomInAndOut" />
           </button>
           {open ? (
-            <div className="menuBox largeText flex flex-col infoText items-center justify-center">
+            <div className="menuBo flex flex-col infoText items-center justify-center">
               <div className="p-5 ">
                 <Wallet
                   className1="btnText connectButton flex flex-col justify-end items-center p-2"
