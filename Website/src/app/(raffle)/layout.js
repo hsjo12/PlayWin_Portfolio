@@ -11,7 +11,7 @@ export default function RootLayout({ children, params }) {
   const { user } = useContext(ContextAPI);
 
   if (!user) {
-    if (pathname === "/raffleIndex") {
+    if (pathname.includes("/raffleIndex")) {
       return (
         <main className="mx-auto flex flex-col w-screen  min-h-[90vh]">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -41,7 +41,7 @@ export default function RootLayout({ children, params }) {
       );
     } else return null;
   } else {
-    if (pathname === "/raffleIndex") {
+    if (pathname.includes("/raffleIndex")) {
       return (
         <main className="mx-auto flex flex-col w-screen min-h-[90vh]">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -64,7 +64,7 @@ export default function RootLayout({ children, params }) {
           </div>
         </main>
       );
-    } else if (pathname === "/myEntries") {
+    } else if (pathname.includes("/myEntries")) {
       return (
         <main className="mx-auto flex flex-col w-screen min-h-[90vh] ">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -87,7 +87,7 @@ export default function RootLayout({ children, params }) {
           </div>
         </main>
       );
-    } else if (pathname === "/raffleCreate") {
+    } else if (pathname.includes("/raffleCreate")) {
       return (
         <main className="mx-auto flex flex-col w-screen min-h-[90vh] ">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -109,7 +109,7 @@ export default function RootLayout({ children, params }) {
           </div>
         </main>
       );
-    } else if (pathname === "/myListing") {
+    } else if (pathname.includes("/myListing")) {
       return (
         <main className="mx-auto flex flex-col w-screen min-h-[90vh] ">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -132,7 +132,7 @@ export default function RootLayout({ children, params }) {
           </div>
         </main>
       );
-    } else if (pathname.includes("raffleDetail")) {
+    } else if (pathname.includes("/raffleDetail")) {
       return (
         <main className="mx-auto flex flex-col w-screen  min-h-[90vh]">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
