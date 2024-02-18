@@ -14,7 +14,7 @@ import {
   getProvider,
 } from "@/components/utils/utils";
 import Connect from "@/components/utils/connect";
-import WrappingUSDT from "./wrappingUSDT";
+import WrapUSDT from "./wrapUSDT.js";
 require("dotenv").config();
 export default function Faucet() {
   const { user, update } = useContext(ContextAPI);
@@ -87,7 +87,7 @@ export default function Faucet() {
             fusdtBalance={fusdtBalance}
           />
           <ThreeButtons />
-          <WrappingUSDT />
+          <WrapUSDT />
         </div>
       </main>
     );

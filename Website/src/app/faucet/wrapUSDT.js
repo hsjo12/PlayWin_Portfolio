@@ -7,7 +7,7 @@ import erc20Json from "../../abis/erc20Abi.json";
 import fusdtJSon from "../../abis/fusdt.json";
 import { ethers } from "ethers";
 
-export default function WrappingUSDT() {
+export default function WrapUSDT() {
   const { setUpdate, user, setUser } = useContext(ContextAPI);
   const [inputValue, setInputValue] = useState("");
   const changeInputValue = useCallback((e) => {
