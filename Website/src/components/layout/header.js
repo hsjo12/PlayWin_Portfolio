@@ -53,9 +53,9 @@ export default function Header() {
     );
   } else {
     return (
-      <div className=" flex flex-col  infoText  mx-auto w-screen left-0 top-0 fixed items-center justify-end bg-[#00000096]">
+      <div className=" flex flex-col    mx-auto w-screen left-0 top-0 fixed items-center justify-end bg-[#00000096]">
         <div className=" mx-auto w-[90%] grid grid-cols-2 border-main-color border-b-2 pl-1 pr-1 tracking-[0.15rem]">
-          <button className="textBtn flex flex-col justify-center  items-start w-full h-full  largeText tracking-[0.3rem]">
+          <button className=" flex flex-col justify-center  items-start w-full h-full  largeText tracking-[0.3rem]">
             <Link href="/">PLAYWIN</Link>
           </button>
 
