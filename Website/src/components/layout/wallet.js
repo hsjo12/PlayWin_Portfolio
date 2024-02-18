@@ -4,6 +4,7 @@ import { ContextAPI } from "../contextAPI/playWinContextAPI";
 import { clearUserAddress, saveUserAddress } from "../utils/storage";
 import Loading from "../utils/loading";
 import { connectMetamask } from "../metamask/connector";
+import { ethers } from "ethers";
 
 export default function Wallet({ className1, className2 }) {
   const { user, setUser } = useContext(ContextAPI);
@@ -18,6 +19,7 @@ export default function Wallet({ className1, className2 }) {
 
   const connect = async () => {
     const user = await connectMetamask();
+    if (!ethers.isAddress(user)) return;
     setUser(user);
   };
 
