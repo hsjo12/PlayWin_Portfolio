@@ -5,7 +5,7 @@ import { createContext, useState, useRef } from "react";
 export const ContextAPI = createContext();
 
 export const PlayWInContextAPI = ({ children }) => {
-  const offset = 10;
+  const offset = 20;
   const xl = 1280;
   const md = 768;
   const maxTicket = 200;
