@@ -11,7 +11,7 @@ export default function RootLayout({ children, params }) {
   const { user } = useContext(ContextAPI);
 
   if (!user) {
-    if (pathname.includes("/raffleIndex")) {
+    if (pathname.toLowerCase().includes("raffleindex")) {
       return (
         <main className="mx-auto flex flex-col w-screen  min-h-[90vh]">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -23,7 +23,7 @@ export default function RootLayout({ children, params }) {
           </div>
         </main>
       );
-    } else if (pathname.includes("raffleDetail")) {
+    } else if (pathname.toLowerCase().includes("raffledetail")) {
       return (
         <main className="mx-auto flex flex-col w-screen  min-h-[90vh]">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -41,7 +41,7 @@ export default function RootLayout({ children, params }) {
       );
     } else return null;
   } else {
-    if (pathname.includes("/raffleIndex")) {
+    if (pathname.toLowerCase().includes("raffleindex")) {
       return (
         <main className="mx-auto flex flex-col w-screen min-h-[90vh]">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -64,7 +64,7 @@ export default function RootLayout({ children, params }) {
           </div>
         </main>
       );
-    } else if (pathname.includes("/myEntries")) {
+    } else if (pathname.toLowerCase().includes("myentries")) {
       return (
         <main className="mx-auto flex flex-col w-screen min-h-[90vh] ">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -87,7 +87,7 @@ export default function RootLayout({ children, params }) {
           </div>
         </main>
       );
-    } else if (pathname.includes("/raffleCreate")) {
+    } else if (pathname.toLowerCase().includes("rafflecreate")) {
       return (
         <main className="mx-auto flex flex-col w-screen min-h-[90vh] ">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -109,7 +109,7 @@ export default function RootLayout({ children, params }) {
           </div>
         </main>
       );
-    } else if (pathname.includes("/myListing")) {
+    } else if (pathname.toLowerCase().includes("mylisting")) {
       return (
         <main className="mx-auto flex flex-col w-screen min-h-[90vh] ">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
@@ -132,7 +132,7 @@ export default function RootLayout({ children, params }) {
           </div>
         </main>
       );
-    } else if (pathname.includes("/raffleDetail")) {
+    } else if (pathname.toLowerCase().toLowerCase().includes("raffledetail")) {
       return (
         <main className="mx-auto flex flex-col w-screen  min-h-[90vh]">
           <div className="flex flex-col gap-10  mx-auto w-[90%]">
