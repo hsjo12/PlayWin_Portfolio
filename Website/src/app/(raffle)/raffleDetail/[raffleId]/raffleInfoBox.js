@@ -377,9 +377,9 @@ export default function RaffleInfoBox({ raffleId }) {
                       value={inputValue}
                     ></input>
                     <div className="w-full text-center">
-                      {`${
-                        raffleInfo.formattedEntryPrice
-                      } FUSDT x ${inputValue} = ${
+                      {`${raffleInfo.formattedEntryPrice} FUSDT x ${
+                        inputValue === "" ? 0 : inputValue
+                      }  = ${
                         raffleInfo.formattedEntryPrice * Number(inputValue)
                       } FUSDT`}
                     </div>
@@ -542,7 +542,9 @@ export default function RaffleInfoBox({ raffleId }) {
             {Number(raffleInfo.deadline * 1000n) > Number(Date.now()) ? (
               <>
                 <div className="w-full text-center">
-                  {`${raffleInfo.formattedEntryPrice} FUSDT x ${inputValue} = ${
+                  {`${raffleInfo.formattedEntryPrice} FUSDT x ${
+                    inputValue === "" ? 0 : inputValue
+                  } = ${
                     raffleInfo.formattedEntryPrice * Number(inputValue)
                   } FUSDT`}
                 </div>
