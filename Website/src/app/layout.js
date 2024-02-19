@@ -52,12 +52,12 @@ const cls = (...classnames) => {
 };
 
 export const metadata = {
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL("https://playwin-on-blockchain.netlify.app"),
   title: "PlayWin",
   description:
     "PlayWin is the platform where users can enjoy raffles and lottery",
   icons: {
-    icon: "/favicon/favicon.png", // /public path
+    icon: "/favicon/favicon.png",
   },
   openGraph: {
     images: "/ogImage/ogImage.png",
