@@ -103,10 +103,13 @@ async function main() {
           console.log("Tx is failed");
         }
       });
+      await holdOn(60000);
     }, Promise.resolve());
 
   console.log("ERC721Raffle is created...");
 }
+
+const holdOn = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
