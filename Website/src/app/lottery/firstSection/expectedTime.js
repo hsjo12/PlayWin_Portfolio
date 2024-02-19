@@ -1,21 +1,28 @@
 "use client";
 import Loading from "@/components/utils/loading";
+import { getContractForReadOnly, getProvider } from "@/components/utils/utils";
 import { useEffect, useState } from "react";
-
-export default function ExpectedTime({ currentBlock, deadlineBlocks }) {
+import lotteryJson from "../../../abis/lottery.json";
+export default function ExpectedTime() {
   const [expectedEndTime, setExpectedEndTime] = useState(null);
 
   useEffect(() => {
-    let blockNumberToAnnounce;
     let timeStamp;
     (async () => {
-      blockNumberToAnnounce = Number(deadlineBlocks);
+      const lotteryInstance = await getContractForReadOnly(
+        lotteryJson.address,
+        lotteryJson.abi
+      );
+      const currentBlock = await (await getProvider()).getBlockNumber();
+      let blockNumberToAnnounce = Number(
+        await lotteryInstance.getDeadlineBlock()
+      );
       timeStamp = await deadline(currentBlock, blockNumberToAnnounce);
       setExpectedEndTime(timeStamp);
     })();
-  }, [currentBlock, deadlineBlocks]);
+  }, []);
 
-  if (!currentBlock || !deadlineBlocks || !expectedEndTime) {
+  if (!expectedEndTime) {
     return (
       <div className="flex flex-col w-full gap-3 ">
         <Loading loaderType="smallLoader" />

@@ -15,7 +15,6 @@ export default async function Lottery() {
   const previousRound = currentRound - 1n;
   const previousRoundInfo = await lottery.roundInfo(previousRound);
   const deadlineBlocks = await lottery.getDeadlineBlock();
-  const currentBlock = await (await getProvider()).getBlockNumber();
 
   return (
     <main className="flex flex-col justify-start items-center mx-auto xl:container w-screen min-h-[80vh] gap-y-10 xl:gap-y-20">
@@ -27,7 +26,6 @@ export default async function Lottery() {
         currentRound={currentRound}
         previousRoundInfo={previousRoundInfo}
         deadlineBlocks={deadlineBlocks}
-        currentBlock={currentBlock}
       />
 
       <SecondSection

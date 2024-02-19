@@ -11,8 +11,6 @@ export default function FirstSection({
   currentEachPlacePrizes,
   currentRound,
   previousRoundInfo,
-  deadlineBlocks,
-  currentBlock,
 }) {
   const { screenWidth, xl, update } = useContext(ContextAPI);
   const [currentPrizeAmount, setCurrentPrizeAmount] = useState(null);
@@ -106,17 +104,11 @@ export default function FirstSection({
           </div>
           <div className="grid grid-cols-2 justify-center items-center lottoText  w-full  ">
             <p className="text-left">Remaining Blocks</p>
-            <BlockNumberCounter
-              deadlineBlocks={deadlineBlocks}
-              currentBlock={currentBlock}
-            />
+            <BlockNumberCounter />
           </div>
           <div className="grid grid-cols-2 justify-center items-center lottoText w-full   ">
             <p className="text-left">Expected end time</p>
-            <ExpectedTime
-              deadlineBlocks={deadlineBlocks}
-              currentBlock={currentBlock}
-            />
+            <ExpectedTime />
           </div>
         </div>
       </section>
@@ -145,15 +137,9 @@ export default function FirstSection({
           <div className="flex w-full smallText justify-between ">
             <p className="w-full ">Expected time</p>
 
-            <ExpectedTime
-              deadlineBlocks={deadlineBlocks}
-              currentBlock={currentBlock}
-            />
+            <ExpectedTime />
           </div>
-          <BlockNumberCounter
-            deadlineBlocks={deadlineBlocks}
-            currentBlock={currentBlock}
-          />
+          <BlockNumberCounter />
         </div>
         <div className="flex flex-col w-[90%] md:w-[50%] mx-auto">
           <p className="lottoSubTitle w-full text-center ">Current Prize</p>
