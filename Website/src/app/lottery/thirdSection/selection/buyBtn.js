@@ -34,7 +34,7 @@ export default function BuyBtn() {
       const totalPrice = BigInt(lotteryNumList.length) * pricePerTicket;
 
       if (userAllowance < totalPrice) {
-        toastMessage("Please approve the staking amount of USDT", "warn");
+        toastMessage("Please approve the staking amount of FUSDT", "warn");
         const tx = await fusdtInstance.approve(
           lotteryInstance.target,
           totalPrice
@@ -44,7 +44,7 @@ export default function BuyBtn() {
 
       const userBalance = await fusdtInstance.balanceOf(user);
       if (userBalance < totalPrice) {
-        return toastMessage("Insufficient USDT balance", "warn");
+        return toastMessage("Insufficient FUSDT balance", "warn");
       }
 
       const tx = await lotteryInstance.buyTickets(lotteryNumList);
