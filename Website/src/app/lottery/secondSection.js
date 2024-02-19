@@ -6,7 +6,7 @@ import lotteryJson from "../../abis/lottery.json";
 import { getContractForReadOnly } from "@/components/utils/utils";
 import Loading from "@/components/utils/loading";
 
-export default function SecondSection({ currentRound, previousRoundInfo }) {
+export default function SecondSection() {
   const { update } = useContext(ContextAPI);
   const [soldTickets, setSoldTickets] = useState(0);
   const [firstPlaceWinners, setFirstPlaceWinners] = useState(0);
@@ -37,7 +37,7 @@ export default function SecondSection({ currentRound, previousRoundInfo }) {
       setThirdPlaceWinners(Number(totalThirdPlaceWinners));
       setLoading(false);
     })();
-  }, [update, currentRound, previousRoundInfo]);
+  }, [update]);
 
   return (
     <div className="infoText w-full flex flex-col justify-center items-center ">

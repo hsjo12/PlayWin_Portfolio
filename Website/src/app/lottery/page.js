@@ -21,17 +21,8 @@ export default async function Lottery() {
       <div className="w-full flex flex-col justify-center items-center title mt-10">
         <p className="mx-auto w-full text-center mainTitle">PLAYWIN Lottery</p>
       </div>
-      <FirstSection
-        currentEachPlacePrizes={currentEachPlacePrizes}
-        currentRound={currentRound}
-        previousRoundInfo={previousRoundInfo}
-        deadlineBlocks={deadlineBlocks}
-      />
-
-      <SecondSection
-        currentRound={currentRound}
-        previousRoundInfo={previousRoundInfo}
-      />
+      <FirstSection />
+      <SecondSection />
       <ThirdSection />
       <FourthSection />
       <FifthSection />

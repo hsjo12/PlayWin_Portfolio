@@ -7,28 +7,11 @@ import { useContext, useEffect, useState } from "react";
 import { ContextAPI } from "@/components/contextAPI/playWinContextAPI";
 import Loading from "@/components/utils/loading";
 import lotteryJson from "../../../abis/lottery.json";
-export default function FirstSection({
-  currentEachPlacePrizes,
-  currentRound,
-  previousRoundInfo,
-}) {
+export default function FirstSection() {
   const { screenWidth, xl, update } = useContext(ContextAPI);
   const [currentPrizeAmount, setCurrentPrizeAmount] = useState(null);
   const [previousWinningNumber, setPreviousWinningNumber] = useState(null);
-
-  /// Get data from SSR
-  useEffect(() => {
-    const prizeInfo = {
-      totalPrize: currentEachPlacePrizes[0],
-      firstPlacePrize: currentEachPlacePrizes[1],
-      secondPlacePrize: currentEachPlacePrizes[2],
-      thirdPlacePrize: currentEachPlacePrizes[3],
-    };
-    const lastRoundWinningNumber =
-      previousRoundInfo[0] === "" ? "00000" : previousRoundInfo[0];
-    setCurrentPrizeAmount({ ...prizeInfo });
-    setPreviousWinningNumber(lastRoundWinningNumber);
-  }, [currentEachPlacePrizes]);
+  const [currentRound, setCurrentRound] = useState(null);
 
   /// Get data for update
   useEffect(() => {
@@ -38,6 +21,9 @@ export default function FirstSection({
         lotteryJson.abi
       );
       const currentEachPlacePrizes = await lottery.getCurrentRoundTotalPrize();
+      const currentRound = await lottery.round();
+      const previousRound = currentRound - 1n;
+      const previousRoundInfo = await lottery.roundInfo(previousRound);
 
       const prizeInfo = {
         totalPrize: currentEachPlacePrizes[0],
@@ -45,11 +31,20 @@ export default function FirstSection({
         secondPlacePrize: currentEachPlacePrizes[2],
         thirdPlacePrize: currentEachPlacePrizes[3],
       };
+      const lastRoundWinningNumber =
+        previousRoundInfo[0] === "" ? "00000" : previousRoundInfo[0];
+      setCurrentRound(currentRound);
       setCurrentPrizeAmount({ ...prizeInfo });
+      setPreviousWinningNumber(lastRoundWinningNumber);
     })();
   }, [update]);
 
-  if (!screenWidth || !currentPrizeAmount || !previousWinningNumber) {
+  if (
+    !screenWidth ||
+    !currentPrizeAmount ||
+    !previousWinningNumber ||
+    !currentRound
+  ) {
     return (
       <div className="w-full min-h-[30vh] flex flex-col justify-center items-center ">
         <Loading loaderType="hugeLoader" />
