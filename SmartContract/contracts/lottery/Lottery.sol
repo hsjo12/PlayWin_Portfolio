@@ -97,7 +97,7 @@ contract Lottery is LotteryStruct, AccessControl{
         announcingTime = 600; /// 10 mins
         startingBlock = block.number; /// This is for fethcing events
         intervalBlock = 85800 / 2; /// intervalTime / 2s since the average time of mining block is 2s on mumbai/
-        price = 1 * 10 ** 6; /// 1 FUSDT 
+        price = 3000 * 10 ** 6; /// 1 FUSDT 
         taxForTeamVault = 1000; // 10%
         taxForRewardVault = 2000; // 20%
         taxForClaimVault = 7000; // 70%
@@ -211,7 +211,7 @@ contract Lottery is LotteryStruct, AccessControl{
         _roundInfo.totalFirstPlaceWinners = _totalFirstPlaceWinners; 
         _roundInfo.totalSecondPlaceWinners = _totalSecondPlaceWinners; 
         _roundInfo.totalThirdPlaceWinners = _totalThirdPlaceWinners; 
-        // _roundInfo.announcedBlock = block.number;
+        _roundInfo.announcedBlock = block.number;
 
         
         uint256 totalPrizeAmountFromOnlySale = firstPlacePrizeAmount + secondPlacePrizeAmount + thirdPlacePrizeAmount;

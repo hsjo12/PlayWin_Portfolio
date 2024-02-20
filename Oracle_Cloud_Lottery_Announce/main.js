@@ -2,7 +2,7 @@ const { requestVRFNumber, announce } = require("./logic/helper");
 const cron = require("node-cron");
 /// Request Random
 cron.schedule(
-  "51 23 * * *",
+  "55 23 * * *",
   async () => {
     try {
       console.log("START REQUEST");
@@ -19,7 +19,7 @@ cron.schedule(
 
 /// Announce
 cron.schedule(
-  "59 23 * * *",
+  "00 00 * * *",
   async () => {
     try {
       console.log("REQUEST ANNOUNCEMENT");
