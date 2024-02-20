@@ -11,6 +11,8 @@ export const fetchTicketList = async (user) => {
 
   const lotteryInstance = getContractForReadOnly(lottery.address, lottery.abi);
   const currentRound = await lotteryInstance.round();
+  const currentBlock = await (await getProvider()).getBlockNumber();
+
   let startingBlockNumber = await lotteryInstance.startingBlock();
   const intervalBlockNumber = await lotteryInstance.intervalBlock();
   const lastBlockNumberForTheRound = startingBlockNumber + intervalBlockNumber;
@@ -18,7 +20,7 @@ export const fetchTicketList = async (user) => {
 
   const events = await lotteryInstance.queryFilter(
     filter,
-    startingBlockNumber,
+    startingBlockNumber > currentBlock ? currentBlock : startingBlockNumber,
     lastBlockNumberForTheRound
   );
 
