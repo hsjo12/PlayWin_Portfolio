@@ -18,7 +18,7 @@ const VRF_HASH_ON_MUMBAI =
 const VRF_GAS_LIMIT = 2500000;
 
 async function main() {
-  const LOTTERY_STARTING_BLOCK = (await ethers.provider.getBlockNumber()) + 30; // starting In 60s
+  const LOTTERY_STARTING_TIME = Math.floor(new Date() / 1000) + 60; // starting In 60s
 
   const [deployer] = await ethers.getSigners();
 
@@ -83,7 +83,7 @@ async function main() {
     rewardVault.target,
     firstPlacePrizeVault.target,
     teamVault.target,
-    LOTTERY_STARTING_BLOCK
+    LOTTERY_STARTING_TIME
   );
 
   // Raffle

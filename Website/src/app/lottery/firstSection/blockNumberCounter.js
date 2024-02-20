@@ -8,32 +8,30 @@ export default function BlockNumberCounter() {
   const [leftBlock, setLeftBlock] = useState(null);
 
   useEffect(() => {
-    let updateLeftBlock;
+    let updateLeftSeconds;
 
     (async () => {
       const lotteryInstance = await getContractForReadOnly(
         lotteryJson.address,
         lotteryJson.abi
       );
-      let currentBlock = await (await getProvider()).getBlockNumber();
-      let blockNumberToAnnounce = Number(
-        await lotteryInstance.getDeadlineBlock()
-      );
+      let currentTime = Math.floor(new Date().getTime() / 1000);
+      let deadline = Number(await lotteryInstance.getDeadline());
 
       let leftOverBlock = 0;
-      updateLeftBlock = setInterval(async () => {
-        leftOverBlock = await blockTimer(currentBlock, blockNumberToAnnounce);
+      updateLeftSeconds = setInterval(async () => {
+        leftOverBlock = await timer(currentTime, deadline);
 
         if (leftOverBlock <= 0) {
           setLeftBlock("Drawing...");
-          clearInterval(updateLeftBlock);
+          clearInterval(updateLeftSeconds);
         } else {
           setLeftBlock(leftOverBlock);
         }
-        currentBlock = currentBlock + 1;
-      }, 2500);
+        currentTime = Math.floor(new Date().getTime() / 1000);
+      }, 1000);
     })();
-    return () => clearInterval(updateLeftBlock);
+    return () => clearInterval(updateLeftSeconds);
   }, []);
 
   if (!leftBlock) {
@@ -74,7 +72,7 @@ export default function BlockNumberCounter() {
   );
 }
 
-const blockTimer = (currentBlock, blockNumberToAnnounce) => {
-  const leftOver = blockNumberToAnnounce - currentBlock;
+const timer = (currentTime, deadline) => {
+  const leftOver = deadline - currentTime;
   return leftOver.toString().padStart(5, "0");
 };

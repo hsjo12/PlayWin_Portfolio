@@ -23,7 +23,7 @@ const setUp = async () => {
   const VRF_HASH_ON_MUMBAI =
     "0x4b09e658ed251bcafeebbc69400383d49f344ace09b9576fe248bb02c003fe9f";
   const VRF_GAS_LIMIT = 2500000;
-  const LOTTERY_STARTING_BLOCK = (await ethers.provider.getBlockNumber()) + 10; // starting In 60s
+  const LOTTERY_STARTING_TIME = Math.floor(new Date() / 1000) + 60; // starting In 60s
   const [deployer, user1, user2, user3, user4, stakingUser1, stakingUser2] =
     await ethers.getSigners();
 
@@ -98,7 +98,7 @@ const setUp = async () => {
     rewardVault.target,
     firstPlacePrizeVault.target,
     teamVault.target,
-    LOTTERY_STARTING_BLOCK
+    LOTTERY_STARTING_TIME
   );
 
   // Raffle
@@ -237,7 +237,7 @@ const setUp = async () => {
     raffle,
     lottery,
     staking,
-    LOTTERY_STARTING_BLOCK,
+    LOTTERY_STARTING_TIME,
     raffleUpkeep,
     chainLinkRegister,
     erc20Prize,

@@ -153,8 +153,8 @@ npx hardhat test
 **ERC1155Prize(TEST-PRIZE)** : 0xFa1AE7DB1eb63EB7c637f85b53046F8276234009
 [https://mumbai.polygonscan.com/address/0xFa1AE7DB1eb63EB7c637f85b53046F8276234009#code]
 
-**Lottery** : 0xF10aEa0fD037A8dDD2cBAF9173BCd381dD398264
-[https://mumbai.polygonscan.com/address/0xF10aEa0fD037A8dDD2cBAF9173BCd381dD398264#code]
+**Lottery** : 0xca0B5A8BA6f92885dE5AF413c768429E26DB7a29
+[https://mumbai.polygonscan.com/address/0xca0B5A8BA6f92885dE5AF413c768429E26DB7a29#code]
 
 **Raffle** : 0x67F8edc89520CBDB77F0c13A10ceDb93f0dCFf25
 [https://mumbai.polygonscan.com/address/0x67F8edc89520CBDB77F0c13A10ceDb93f0dCFf25#code]

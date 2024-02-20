@@ -47,6 +47,9 @@ contract Lottery is LotteryStruct, AccessControl{
     IStaking public staking;
     uint256 public round;
     uint256 public price;
+    uint256 public startingTime;
+    uint256 public intervalTime;
+    uint256 public announcingTime;
     uint256 public startingBlock;
     uint256 public intervalBlock;
     uint8 public claimableRound;
@@ -79,10 +82,10 @@ contract Lottery is LotteryStruct, AccessControl{
         IRewardVault _rewardVault, 
         IFirstPlacePrizeVault _firstPlacePrizeVault,
         address _taemVault,
-        uint256 _startingBlock
+        uint256 _startingTime
     ) 
     {    
-        if(_startingBlock < block.number) revert MustBeLaterThanNow();
+        if(_startingTime < block.timestamp) revert MustBeLaterThanNow();
         FUSDT = _fusdt;
         TEAM_VAULT = _taemVault;
         REWARD_VAULT = _rewardVault;
@@ -90,7 +93,10 @@ contract Lottery is LotteryStruct, AccessControl{
         FIRST_PLACE_PRIZE_VAULT = _firstPlacePrizeVault;
         round = 1;
         claimableRound = 7; /// users can calim their prizes for 7 rounds 
-        intervalBlock = 42600; /// Around 23 hrs and 50 mins
+        intervalTime = 85800; /// Around 23 hrs and 50 mins
+        announcingTime = 600; /// 10 mins
+        startingBlock = block.number; /// This is for fethcing events
+        intervalBlock = 85800 / 2; /// intervalTime / 2s since the average time of mining block is 2s on mumbai/
         price = 1 * 10 ** 6; /// 1 FUSDT 
         taxForTeamVault = 1000; // 10%
         taxForRewardVault = 2000; // 20%
@@ -99,7 +105,7 @@ contract Lottery is LotteryStruct, AccessControl{
         shareOfTheFirstPlacePrize = 1000; // 10%
         shareOfTheSecondPlacePrize = 6000; // 60%
         shareOfTheThirdPlacePrize = 3000; // 20%
-        startingBlock = _startingBlock;
+        startingTime = _startingTime;
     
         _grantRole(MANAGER, msg.sender);
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
@@ -154,8 +160,8 @@ contract Lottery is LotteryStruct, AccessControl{
         if(!isRoundOver()) revert Active();
         /// Increase round
         uint256 currentRound = round++;
-        /// Update StartingBlock 
-        startingBlock = block.number;
+        /// Update StartingTime (It will be after 24 hrours)
+        startingTime = startingTime + intervalTime + announcingTime;
         RoundInfo storage _roundInfo = roundInfo[currentRound];
         RoundInfo storage _nextRoundInfo = roundInfo[round];
         uint256 totalSales = _roundInfo.totalSales;
@@ -185,11 +191,9 @@ contract Lottery is LotteryStruct, AccessControl{
         );
 
         if(_totalFirstPlaceWinners == 0) {
-            _roundInfo.onlyFirstPlacePrizeAmountFromTeam = 0; 
             _roundInfo.firstPlacePrizeAmountFromFees = 0; 
             _roundInfo.totalFirstPlacePrizeAmount = 0;
         }else {
-            _roundInfo.onlyFirstPlacePrizeAmountFromTeam = onlyFirstPlacePrizeAmountFromTeam; 
             _roundInfo.firstPlacePrizeAmountFromFees = firstPlacePrizeAmount; 
             _roundInfo.totalFirstPlacePrizeAmount = onlyFirstPlacePrizeAmountFromTeam + firstPlacePrizeAmount;
             /// Send FUSDT to claim vault
@@ -207,7 +211,7 @@ contract Lottery is LotteryStruct, AccessControl{
         _roundInfo.totalFirstPlaceWinners = _totalFirstPlaceWinners; 
         _roundInfo.totalSecondPlaceWinners = _totalSecondPlaceWinners; 
         _roundInfo.totalThirdPlaceWinners = _totalThirdPlaceWinners; 
-        _roundInfo.announcedBlock = block.number;
+        // _roundInfo.announcedBlock = block.number;
 
         
         uint256 totalPrizeAmountFromOnlySale = firstPlacePrizeAmount + secondPlacePrizeAmount + thirdPlacePrizeAmount;
@@ -340,7 +344,7 @@ contract Lottery is LotteryStruct, AccessControl{
     /// @notice Returns the status of a round.
     /// @return roundStatus Returns true if the round is open, false otherwise.
     function isRoundOver() public view returns(bool) {
-        return startingBlock + intervalBlock < block.number;
+        return startingTime + intervalTime < block.timestamp;
     }
 
     /// @notice Returns the total, first-place, second-place, third-place prize amount.
@@ -373,9 +377,9 @@ contract Lottery is LotteryStruct, AccessControl{
         totalPrize = firstPlacePrize + secondPlacePrize + thirdPlacePrize;
     }
 
-    /// @notice Returns the deadline block number for a round.
-    function getDeadlineBlock() external view returns(uint256) {
-        return startingBlock + intervalBlock;
+    /// @notice Returns the deadline for a round.
+    function getDeadline() external view returns(uint256) {
+        return startingTime + intervalTime;
     }
 
     /// @notice Breaks down the total sale into three parts for distributing prizes.
@@ -563,17 +567,37 @@ contract Lottery is LotteryStruct, AccessControl{
         onlyFirstPlacePrizeAmountFromTeam = _onlyFirstPlacePrizeAmountFromTeam;
     }
 
-    /// @notice Allows the admin to set the starting block number for the lottery.
-    /// @param _startingBlock The starting block number.
+    /// @notice Allows the admin to set the starting time for the lottery.
+    /// @param _startingTime The starting time.
+    function setStartingTime(uint256 _startingTime) external onlyRole(MANAGER) {
+        startingTime = _startingTime;
+    }
+
+    /// @notice Allows the admin to set the interval time for the lottery.
+    /// @param _intervalTime The interval time.
+    function setIntervalTime(uint256 _intervalTime) external onlyRole(MANAGER) {
+        intervalTime = _intervalTime;
+    }
+
+    /// @notice Allows the admin to set the announcing time for the lottery.
+    /// @dev The time is to randomly generate the winning number and decide the winners on back-end.
+    /// @param _announcingTime The announcing time.
+    function setAnnouncingTime(uint256 _announcingTime) external onlyRole(MANAGER) {
+        announcingTime = _announcingTime;
+    }
+
+    /// @notice Allows the admin to set the starting block for fetching the lottery events on frontend.
+    /// @param _startingBlock The starting time.
     function setStartingBlock(uint256 _startingBlock) external onlyRole(MANAGER) {
         startingBlock = _startingBlock;
     }
 
-    /// @notice Allows the admin to set the interval block number for the lottery.
-    /// @param _intervalBlock The interval block number.
-    function setIntervalBlock(uint256 _intervalBlock) external onlyRole(MANAGER) {
-        intervalBlock = _intervalBlock;
+    /// @notice Allows the admin to set the interval block for fetching the lottery events on frontend.
+    /// @param _intervalblock The interval block.
+    function setIntervalBlock(uint256 _intervalblock) external onlyRole(MANAGER) {
+        intervalBlock = _intervalblock;
     }
+
 
     /// @notice Allows the admin to set the number of rounds users have to claim their prize.
     /// @param _claimableRound The number of rounds to claim a prize.

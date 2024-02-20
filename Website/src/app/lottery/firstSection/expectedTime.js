@@ -13,11 +13,9 @@ export default function ExpectedTime() {
         lotteryJson.address,
         lotteryJson.abi
       );
-      const currentBlock = await (await getProvider()).getBlockNumber();
-      let blockNumberToAnnounce = Number(
-        await lotteryInstance.getDeadlineBlock()
-      );
-      timeStamp = await deadline(currentBlock, blockNumberToAnnounce);
+
+      let deadline = Number(await lotteryInstance.getDeadline());
+      timeStamp = await timerConverter(deadline);
       setExpectedEndTime(timeStamp);
     })();
   }, []);
@@ -37,14 +35,9 @@ export default function ExpectedTime() {
   }
 }
 
-const deadline = async (currentBlock, blockNumberToAnnounce) => {
-  const leftOver = Number(blockNumberToAnnounce) - Number(currentBlock);
-  const expectedAddedTime = Math.floor(leftOver * 2.2); /// around 2.2~2.5 per block
-
+const timerConverter = async (deadline) => {
   const timeStamp = Date.now();
-  const expectedEndTimeStamp = new Date(
-    timeStamp + Number(expectedAddedTime * 1000)
-  );
+  const expectedEndTimeStamp = new Date(Number(deadline * 1000));
   let amOrPm = "am";
 
   if (expectedEndTimeStamp.getHours() >= 12) amOrPm = "pm";

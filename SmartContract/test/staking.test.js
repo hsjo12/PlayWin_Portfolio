@@ -119,11 +119,12 @@ describe("Staking", () => {
     let user1FusdtBalance, user2FusdtBalance, user3FusdtBalance;
     let expectedUser1Rewards, expectedUser2Rewards, expectedUser3Rewards;
     before("Round changed", async () => {
-      const closingRound = await lottery.intervalBlock();
-      roundChangingBlocks =
-        BigInt(await ethers.provider.getBlockNumber()) + closingRound;
       await lottery.buyTickets(Array(10).fill("11112"));
-      await mine(roundChangingBlocks);
+
+      const closingRound = await lottery.intervalTime();
+      lotteryRoundChangingTime = (await lottery.startingTime()) + closingRound;
+      await time.increaseTo(lotteryRoundChangingTime);
+
       const winningNumber = "00700";
       const totalFirstPlaceWinners = 0;
       const totalSecondPlaceWinners = 0;
@@ -218,10 +219,9 @@ describe("Staking", () => {
       const lockupRound = 1;
       await staking.setLockupRound(lockupRound);
 
-      const closingRound = await lottery.intervalBlock();
-      lotteryRoundChangingBlocks =
-        BigInt(await ethers.provider.getBlockNumber()) + closingRound;
-      await mine(lotteryRoundChangingBlocks);
+      const closingRound = await lottery.intervalTime();
+      lotteryRoundChangingTime = (await lottery.startingTime()) + closingRound;
+      await time.increaseTo(lotteryRoundChangingTime);
 
       /// Increase lottery round
       const winningNumber = "12345";

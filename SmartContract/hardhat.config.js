@@ -22,7 +22,7 @@ module.exports = {
   gasReporter: {
     currency: "ETH",
     enabled: false,
-    coinmarketcap: "8c73ee1a-5579-43a3-8e29-52893c5ecb00",
+    coinmarketcap: "",
   },
 
   networks: {
