@@ -97,11 +97,11 @@ contract Lottery is LotteryStruct, AccessControl{
         announcingTime = 600; /// 10 mins
         startingBlock = block.number; /// This is for fethcing events
         intervalBlock = 85800 / 2; /// intervalTime / 2s since the average time of mining block is 2s on mumbai/
-        price = 3000 * 10 ** 6; /// 1 FUSDT 
+        price = 1 * 10 ** 6; /// 1 FUSDT 
         taxForTeamVault = 1000; // 10%
         taxForRewardVault = 2000; // 20%
         taxForClaimVault = 7000; // 70%
-        onlyFirstPlacePrizeAmountFromTeam = 1 * 10 ** 6; /// The prize will be as small amount as 1 FUSDC for test purpose.
+        onlyFirstPlacePrizeAmountFromTeam = 3000 * 10 ** 6; /// The prize will be as small amount as 1 FUSDC for test purpose.
         shareOfTheFirstPlacePrize = 1000; // 10%
         shareOfTheSecondPlacePrize = 6000; // 60%
         shareOfTheThirdPlacePrize = 3000; // 20%
