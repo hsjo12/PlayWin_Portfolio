@@ -168,5 +168,5 @@ npx hardhat test
 **ChainLinkRegister** : 0x8C96430d4895857fC72CAe3b34119ad07F7d6610
 [https://mumbai.polygonscan.com/address/0x8C96430d4895857fC72CAe3b34119ad07F7d6610#code]
 
-**VRF** : 0xe22E1c6F84A9862cE4764C2B560bC1cb24f2187c
-[https://mumbai.polygonscan.com/address/0xe22E1c6F84A9862cE4764C2B560bC1cb24f2187c#code]
+**VRF** : 0x8FA15CbFCf5017B8E829f3368793819c00dA456C
+[https://mumbai.polygonscan.com/address/0x8FA15CbFCf5017B8E829f3368793819c00dA456C#code]

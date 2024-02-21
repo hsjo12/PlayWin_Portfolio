@@ -7,7 +7,7 @@ const {
 } = require("./generators");
 const lotteryJson = require("../abis/Lottery.json");
 const vrfJson = require("../abis/Vrf.json");
-const VRF_ADDRESS = "0x08A8329C2e69EdfA14ae080CAEaee31b1fA56b26";
+const VRF_ADDRESS = "0x8FA15CbFCf5017B8E829f3368793819c00dA456C";
 const requestVRFNumber = async () => {
   const provider = new ethers.JsonRpcProvider(process.env.RPC);
   const user = new Wallet(process.env.PK, provider);
