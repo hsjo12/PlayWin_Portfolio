@@ -193,6 +193,7 @@ contract Lottery is LotteryStruct, AccessControl{
         if(_totalFirstPlaceWinners == 0) {
             _roundInfo.firstPlacePrizeAmountFromFees = 0; 
             _roundInfo.totalFirstPlacePrizeAmount = 0;
+            firstPlacePrizeAmount = 0;
         }else {
             _roundInfo.firstPlacePrizeAmountFromFees = firstPlacePrizeAmount; 
             _roundInfo.totalFirstPlacePrizeAmount = onlyFirstPlacePrizeAmountFromTeam + firstPlacePrizeAmount;
@@ -220,11 +221,10 @@ contract Lottery is LotteryStruct, AccessControl{
         ///f there are no winners in any of the positions, the prize will be carried over to the next round.
         _nextRoundInfo.totalSales = remainingPrizeCarriedOver; 
 
-
-        /// a part of ticket fee is kept and then will move into the REWARD_VAULT after the announce function.
-        FUSDT.transfer(address(CLAIM_VAULT), totalPrizeAmountFromOnlySale);
-
-
+        if(totalPrizeAmountFromOnlySale!=0) {
+            /// a part of ticket fee is kept and then will move into the REWARD_VAULT after the announce function.
+            FUSDT.transfer(address(CLAIM_VAULT), totalPrizeAmountFromOnlySale);
+        }
 
         ///  a part of ticket fee goes to the reaward vault so that staking user can get rwards.
         FUSDT.transfer(address(REWARD_VAULT), toRewardVault);

@@ -137,6 +137,7 @@ async function main() {
   /// deployer send FUSDT to the firstPlacePrizeVault vault for the future first place winners
   await fusdt.transfer(firstPlacePrizeVault, ethers.parseUnits("20", 6));
 
+  ////// Write contracts abis
   // Fusdt
   await writeDeployedContractInfo(fusdt, "FUSDT", "fusdt");
 
@@ -173,6 +174,65 @@ async function main() {
     "ChainLinkRegister",
     "chainLinkRegister"
   );
+
+  ////// Verify Contracts
+  // Token
+  await verify(fusdt.target, [USDT]);
+
+  // 5 Vaults
+  await verify(claimVault.target, [fusdt.target]);
+  await verify(rewardVault.target, [fusdt.target]);
+  await verify(teamVault.target, [fusdt.target, deployer.address]);
+  await verify(raffleVault.target, [
+    fusdt.target,
+    teamVault.target,
+    rewardVault.target,
+  ]);
+  await verify(firstPlacePrizeVault.target, [fusdt.target, claimVault.target]);
+
+  // Test Prize
+  await verify(erc20Prize.target, ["myERC20", "myERC20", deployer.address]);
+  await verify(erc721Prize.target, [
+    "Lil' Heroes",
+    "Lil' Heroes",
+    deployer.address,
+  ]);
+  await verify(erc1155Prize.target, [deployer.address]);
+  // Lottery
+  await verify(claimVault.target, [
+    fusdt.target,
+    claimVault.target,
+    rewardVault.target,
+    firstPlacePrizeVault.target,
+    teamVault.target,
+    LOTTERY_STARTING_TIME,
+  ]);
+
+  // Raffle
+  await verify(raffle.target, [
+    fusdt.target,
+    raffleVault.target,
+    lottery.target,
+  ]);
+
+  // RaffleUpkeep
+  await verify(raffle.target, [
+    raffle.target,
+    VRF_COORDINATOR_ON_MUMBAI,
+    VRF_HASH_ON_MUMBAI,
+    VRF_GAS_LIMIT,
+    deployer.address,
+  ]);
+
+  // Staking
+  await verify(staking.target, [
+    USDT,
+    USDT_AAVE_TOKEN_ON_MUMBAI,
+    AAVE_POOL_ON_MUMBAI,
+    lottery.target,
+    rewardVault.target,
+    teamVault.target,
+  ]);
 }
 
 const writeDeployedContractInfo = async (contract, contractName, fileName) => {
@@ -219,6 +279,22 @@ const gainFUSDT = async (fusdt, userList) => {
     tx = await fusdt.connect(currentUser).wrapUSDT(ethers.parseUnits("10", 6));
     await tx.wait();
   }, Promise.resolve());
+};
+
+const verify = async (contractAddress, args) => {
+  console.log("Verifying contract...");
+  try {
+    await run("verify:verify", {
+      address: contractAddress,
+      constructorArguments: args,
+    });
+  } catch (e) {
+    if (e.message.toLowerCase().includes("already verified")) {
+      console.log("Already verified!");
+    } else {
+      console.log(e);
+    }
+  }
 };
 
 // We recommend this pattern to be able to use async/await everywhere

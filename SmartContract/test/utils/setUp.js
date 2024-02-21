@@ -131,7 +131,7 @@ const setUp = async () => {
 
   // link the staking contract to the lottery contract
   await lottery.setStaking(staking.target);
-
+  await lottery.setOnlyFirstPlacePrizeAmountFromTeam(ethers.parseUnits("1", 6));
   const ChainLinkRegister = await ethers.getContractFactory(
     "ChainLinkRegister"
   );

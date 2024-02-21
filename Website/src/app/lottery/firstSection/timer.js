@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { getContractForReadOnly, getProvider } from "@/components/utils/utils";
 import lotteryJson from "../../../abis/lottery.json";
 import Loading from "@/components/utils/loading";
-export default function BlockNumberCounter() {
+export default function Timer() {
   const [leftBlock, setLeftBlock] = useState(null);
 
   useEffect(() => {

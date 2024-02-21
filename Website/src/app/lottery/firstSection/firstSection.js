@@ -1,7 +1,7 @@
 "use client";
 import { converter, getContractForReadOnly } from "@/components/utils/utils";
 import LottoBalls from "./lottoBalls";
-import BlockNumberCounter from "./blockNumberCounter";
+import Timer from "./timer";
 import ExpectedTime from "./expectedTime";
 import { useContext, useEffect, useState } from "react";
 import { ContextAPI } from "@/components/contextAPI/playWinContextAPI";
@@ -99,7 +99,7 @@ export default function FirstSection() {
           </div>
           <div className="grid grid-cols-2 justify-center items-center lottoText  w-full  ">
             <p className="text-left">Remaining Blocks</p>
-            <BlockNumberCounter />
+            <Timer />
           </div>
           <div className="grid grid-cols-2 justify-center items-center lottoText w-full   ">
             <p className="text-left">Expected end time</p>
@@ -134,7 +134,7 @@ export default function FirstSection() {
 
             <ExpectedTime />
           </div>
-          <BlockNumberCounter />
+          <Timer />
         </div>
         <div className="flex flex-col w-[90%] md:w-[50%] mx-auto">
           <p className="lottoSubTitle w-full text-center ">Current Prize</p>

@@ -24,7 +24,11 @@ module.exports = {
     enabled: false,
     coinmarketcap: "",
   },
-
+  etherscan: {
+    apiKey: {
+      polygonMumbai: process.env.MUMBAI_KEY,
+    },
+  },
   networks: {
     hardhat: {
       forking: {

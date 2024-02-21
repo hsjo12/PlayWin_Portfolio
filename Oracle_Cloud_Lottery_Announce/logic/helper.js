@@ -7,7 +7,7 @@ const {
 } = require("./generators");
 const lotteryJson = require("../abis/Lottery.json");
 const vrfJson = require("../abis/Vrf.json");
-const VRF_ADDRESS = "0x170bFef69275E923Acbec221F0A41Eb471826E3D";
+const VRF_ADDRESS = "0xe22E1c6F84A9862cE4764C2B560bC1cb24f2187c";
 const requestVRFNumber = async () => {
   const provider = new ethers.JsonRpcProvider(process.env.RPC);
   const user = new Wallet(process.env.PK, provider);
@@ -53,7 +53,7 @@ const announce = async () => {
 
   /// Try to fetch random number
   while (true) {
-    console.log("TRY TO FETHC ROUND INFO", round);
+    console.log("try to fetch the round information", round);
     _roundInfo = await vrf.roundInfo(round);
     console.log("_roundInfo.fulfilled", _roundInfo.fulfilled);
     if (_roundInfo.fulfilled) {
@@ -108,7 +108,7 @@ const announce = async () => {
     round,
     intersectionForThirdWinningNumber
   );
-
+  console.log("winningNumber", winningNumber, typeof winningNumber);
   console.log("totalFirstPlaceWinners", totalFirstPlaceWinners);
   console.log("totalSecondPlaceWinners", totalSecondPlaceWinners);
   console.log("totalThirdPlaceWinners", totalThirdPlaceWinners);
