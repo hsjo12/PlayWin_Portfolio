@@ -70,7 +70,7 @@ async function main() {
   const deadline =
     Math.floor(new Date().getTime() / 1000) +
     Math.floor(Math.random() * 10000) +
-    86400;
+    100 * 86400;
   const erc20RaffleInfo = createErc20RaffleInfoParam(
     erc20Prize.target,
     erc20PrizeAmount,
