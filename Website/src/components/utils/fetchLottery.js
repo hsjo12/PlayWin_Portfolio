@@ -17,11 +17,11 @@ export const fetchTicketList = async (user) => {
   const lastBlockNumberForTheRound =
     Number(startingBlockNumber) + Number(intervalBlockNumber);
   const filter = await lotteryInstance.filters.Buy(currentRound, user, null);
-
+  const currentBlock = await getProvider().getBlockNumber();
   const events = await lotteryInstance.queryFilter(
     filter,
-    startingBlockNumber,
-    lastBlockNumberForTheRound
+    lastBlockNumberForTheRound,
+    currentBlock
   );
 
   const info = [];

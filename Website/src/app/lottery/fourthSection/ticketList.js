@@ -14,6 +14,7 @@ export default function TicketList() {
     (async () => {
       setLoading(true);
       const newList = await fetchTicketList(user);
+
       setTicketList([...newList]);
       setLoading(false);
     })();
