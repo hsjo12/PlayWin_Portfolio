@@ -35,13 +35,13 @@ export default function PrizeList() {
         lotteryJson.address,
         lotteryJson.abi
       );
-
+      console.log("lotteryInstance");
       const prizeAmount = await lotteryInstance.getRewards(
         round,
         winningNumber,
         user
       );
-
+      console.log("prizeAmount", prizeAmount);
       setOpenPrizeInfo({
         winner: user,
         prizeAmount: converter(prizeAmount, 6),

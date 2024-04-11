@@ -86,7 +86,7 @@ async function main() {
       const deadline =
         Math.floor(new Date().getTime() / 1000) +
         Math.floor(Math.random() * 10000) +
-        30 * 86400;
+        130 * 86400;
       const erc721RaffleInfo = createErc721RaffleInfoParam(
         erc721Prize.target,
         deployer.address,
@@ -103,7 +103,7 @@ async function main() {
           console.log("Tx is failed");
         }
       });
-      await holdOn(60000);
+      await holdOn(10000);
     }, Promise.resolve());
 
   console.log("ERC721Raffle is created...");

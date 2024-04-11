@@ -60,17 +60,17 @@ async function main() {
   await tx.wait();
   console.log("approval...");
 
-  const erc20PrizeAmount = ethers.parseEther("10");
+  const erc20PrizeAmount = ethers.parseEther("20");
   tx = await erc20Prize.mint(deployer.address, erc20PrizeAmount);
   await tx.wait();
   console.log("ERC20 is minted...");
 
-  const entryPrice = ethers.parseUnits("1", 6);
+  const entryPrice = ethers.parseUnits("2", 6);
 
   const deadline =
     Math.floor(new Date().getTime() / 1000) +
     Math.floor(Math.random() * 10000) +
-    100 * 86400;
+    120 * 86400;
   const erc20RaffleInfo = createErc20RaffleInfoParam(
     erc20Prize.target,
     erc20PrizeAmount,

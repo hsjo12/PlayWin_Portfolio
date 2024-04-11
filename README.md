@@ -126,50 +126,50 @@ npx hardhat test
 
 **CONTRACT**
 
-**FUSDT** : 0x9Af768622d6e320109A4bba9caFC65E19719A77C
-[https://mumbai.polygonscan.com/address/0x9Af768622d6e320109A4bba9caFC65E19719A77C#code]
+**FUSDT** : 0x5EF12967a7dA58a30dAc806b20CD88D74ECa4702
+[https://mumbai.polygonscan.com/address/0x5EF12967a7dA58a30dAc806b20CD88D74ECa4702#code]
 
-**ClaimVault** : 0x2CBC7b6400dc3AdC60df97D4239f37D67dFC7c7F
-[https://mumbai.polygonscan.com/address/0x2CBC7b6400dc3AdC60df97D4239f37D67dFC7c7F#code]
+**ClaimVault** : 0xfe6364306822AB31e568aFe64CAb4023D0f072A6
+[https://mumbai.polygonscan.com/address/0xfe6364306822AB31e568aFe64CAb4023D0f072A6#code]
 
-**RewardVault** : 0xBFE762Cb6F97FB3b8F274b3ed70ec1D0839cA553
-[https://mumbai.polygonscan.com/address/0xBFE762Cb6F97FB3b8F274b3ed70ec1D0839cA553#code]
+**RewardVault** : 0x23f01521F9e47CC6C3B5819373483f24260914AA
+[https://mumbai.polygonscan.com/address/0x23f01521F9e47CC6C3B5819373483f24260914AA#code]
 
-**TeamVault** : 0x41b0cCB8dD9a50531a3B90FbeA41185288877e64
-[https://mumbai.polygonscan.com/address/0x41b0cCB8dD9a50531a3B90FbeA41185288877e64#code]
+**TeamVault** : 0xcB506b57450fc5F309EbF33f345Be0bAAa828798
+[https://mumbai.polygonscan.com/address/0xcB506b57450fc5F309EbF33f345Be0bAAa828798#code]
 
-**RaffleVault** : 0x4754439Dec895Ca595717C0c12a603aAb097F829
-[https://mumbai.polygonscan.com/address/0x4754439Dec895Ca595717C0c12a603aAb097F829#code]
+**RaffleVault** : 0xbEa8227466BC8ff7439AB260e0dB3c8D5a26C81B
+[https://mumbai.polygonscan.com/address/0xbEa8227466BC8ff7439AB260e0dB3c8D5a26C81B#code]
 
-**FirstPlacePrizeVault** : 0xfbF17A73FcD2250a8bE871A33911f10a81A14231
-[https://mumbai.polygonscan.com/address/0xfbF17A73FcD2250a8bE871A33911f10a81A14231#code]
+**FirstPlacePrizeVault** : 0xc1B39AABB9C563786E06bb2729e08dDd94c
+[https://mumbai.polygonscan.com/address/0xc1B39AABB9C563786E06bb2729e08dDd94c#code]
 
-**ERC20Prize(TEST-PRIZE)** : 0xf1882631ad63fB2d9911114512e5CCb9ba20B3F5
-[https://mumbai.polygonscan.com/address/0xf1882631ad63fB2d9911114512e5CCb9ba20B3F5#code]
+**ERC20Prize(TEST-PRIZE)** : 0x89693454A4D9A4A49af63a05090f85cF32774538
+[https://mumbai.polygonscan.com/address/0x89693454A4D9A4A49af63a05090f85cF32774538#code]
 
-**ERC721Prize(TEST-PRIZE)** : 0x893Eb3209B58b23668Af610e9930cd6CBA6cd1a7
-[https://mumbai.polygonscan.com/address/0x893Eb3209B58b23668Af610e9930cd6CBA6cd1a7#code]
+**ERC721Prize(TEST-PRIZE)** : 0x327056d5433513EB99b275fd57d9Da6d1F876569
+[https://mumbai.polygonscan.com/address/0x327056d5433513EB99b275fd57d9Da6d1F876569#code]
 
-**ERC1155Prize(TEST-PRIZE)** : 0x92982482320C965d237ca997351cb16F77e9A401
-[https://mumbai.polygonscan.com/address/0x92982482320C965d237ca997351cb16F77e9A401#code]
+**ERC1155Prize(TEST-PRIZE)** : 0x1e5Aab1Bf2db3e1931FAE3A8B6023f8cCA748AF5
+[https://mumbai.polygonscan.com/address/0x1e5Aab1Bf2db3e1931FAE3A8B6023f8cCA748AF5#code]
 
-**Lottery** : 0xc4B788f7790ed904fF3e47e1743cdf9eFDa32E99
-[https://mumbai.polygonscan.com/address/0xc4B788f7790ed904fF3e47e1743cdf9eFDa32E99#code]
+**Lottery** : 0xF8EB8d16BA7ba1618349935b2DDC929a0AD7ba9d
+[https://mumbai.polygonscan.com/address/0xF8EB8d16BA7ba1618349935b2DDC929a0AD7ba9d#code]
 
-**Raffle** : 0x4628cf0E6D3a6c6C7aEC4287079Db67010bC215A
-[https://mumbai.polygonscan.com/address/0x4628cf0E6D3a6c6C7aEC4287079Db67010bC215A#code]
+**Raffle** : 0x80F9C901AB1d887b8d95b1cE0E697336CcDeD571
+[https://mumbai.polygonscan.com/address/0x80F9C901AB1d887b8d95b1cE0E697336CcDeD571#code]
 
-**RaffleUpKeep** : 0xb42284f57864a65b34A4023Fa44441eB14A9f152
-[https://mumbai.polygonscan.com/address/0xb42284f57864a65b34A4023Fa44441eB14A9f152#code]
+**RaffleUpKeep** : 0x7F746f1eB0fd3da2B5122708BFa369865E79A1c5
+[https://mumbai.polygonscan.com/address/0x7F746f1eB0fd3da2B5122708BFa369865E79A1c5#code]
 
-**Staking** : 0x59445DAbe9F0bb42Cf7DD9565A6D9811A29B0b00
-[https://mumbai.polygonscan.com/address/0x59445DAbe9F0bb42Cf7DD9565A6D9811A29B0b00#code]
+**Staking** : 0x75f466B3FE06aA6cA9Ef4ff11e5886Bcd8043Eca
+[https://mumbai.polygonscan.com/address/0x75f466B3FE06aA6cA9Ef4ff11e5886Bcd8043Eca#code]
 
-**ChainLinkRegister** : 0x8C96430d4895857fC72CAe3b34119ad07F7d6610
-[https://mumbai.polygonscan.com/address/0x8C96430d4895857fC72CAe3b34119ad07F7d6610#code]
+**ChainLinkRegister** : 0x41CCF581F2Ad4E4494A34fCCd600611983Dd76
+[https://mumbai.polygonscan.com/address/0x41CCF581F2Ad4E4494A34fCCd600611983Dd76#code]
 
-**Old_VRF** : 0x8FA15CbFCf5017B8E829f3368793819c00dA456C
+**VRF** : 0x8FA15CbFCf5017B8E829f3368793819c00dA456C
 [https://mumbai.polygonscan.com/address/0x8FA15CbFCf5017B8E829f3368793819c00dA456C#code]
 
-**Current_VRF** : 0x9126E419B41B55581b594833f0F2EF0080c25cFe
-[https://mumbai.polygonscan.com/address/0x9126E419B41B55581b594833f0F2EF0080c25cFe#code]
+**Current_VRF** : 0x71A7b90dB224642d2A55829418557acF1aD192E6
+[https://mumbai.polygonscan.com/address/0x71A7b90dB224642d2A55829418557acF1aD192E6#code]

@@ -427,7 +427,7 @@ contract Lottery is LotteryStruct, AccessControl{
     {
         /// The rounding error will be deviated from 1e18 
         uint256 userShare = (_totalSelectedNumberByUser * 1e18) / _totalWinners;
-        toWinner = userShare *  _totalPrizeAmount / 1e18;
+        toWinner = (userShare *  _totalPrizeAmount) / 1e18;
     } 
 
     /// @notice Finds the number of matched numbers between winning numbers and user-selected numbers.
