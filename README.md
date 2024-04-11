@@ -141,8 +141,8 @@ npx hardhat test
 **RaffleVault** : 0xbEa8227466BC8ff7439AB260e0dB3c8D5a26C81B
 [https://mumbai.polygonscan.com/address/0xbEa8227466BC8ff7439AB260e0dB3c8D5a26C81B#code]
 
-**FirstPlacePrizeVault** : 0xc1B39AABB9C563786E06bb2729e08dDd94c
-[https://mumbai.polygonscan.com/address/0xc1B39AABB9C563786E06bb2729e08dDd94c#code]
+**FirstPlacePrizeVault** : 0xc1B39AABB9C563786E06bb2729e08dDd94cE6bD0
+[https://mumbai.polygonscan.com/address/0xc1B39AABB9C563786E06bb2729e08dDd94cE6bD0#code]
 
 **ERC20Prize(TEST-PRIZE)** : 0x89693454A4D9A4A49af63a05090f85cF32774538
 [https://mumbai.polygonscan.com/address/0x89693454A4D9A4A49af63a05090f85cF32774538#code]
@@ -170,6 +170,3 @@ npx hardhat test
 
 **VRF** : 0x8FA15CbFCf5017B8E829f3368793819c00dA456C
 [https://mumbai.polygonscan.com/address/0x8FA15CbFCf5017B8E829f3368793819c00dA456C#code]
-
-**Current_VRF** : 0x71A7b90dB224642d2A55829418557acF1aD192E6
-[https://mumbai.polygonscan.com/address/0x71A7b90dB224642d2A55829418557acF1aD192E6#code]
