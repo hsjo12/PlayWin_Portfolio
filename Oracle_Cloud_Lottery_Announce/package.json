@@ -2,7 +2,7 @@
   "dependencies": {
     "cron": "^3.1.6",
     "dotenv": "^16.4.3",
-    "ethers": "^6.11.0",
+    "ethers": "6.10",
     "ethersjs": "^0.0.1-security",
     "init": "^0.1.2",
     "node-cron": "^3.0.3",
