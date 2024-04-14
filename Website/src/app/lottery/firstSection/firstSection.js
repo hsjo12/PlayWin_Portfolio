@@ -98,7 +98,7 @@ export default function FirstSection() {
             <LottoBalls winningNumber={previousWinningNumber} />
           </div>
           <div className="grid grid-cols-2 justify-center items-center lottoText  w-full  ">
-            <p className="text-left">Remaining Blocks</p>
+            <p className="text-left">Remaining Time</p>
             <Timer />
           </div>
           <div className="grid grid-cols-2 justify-center items-center lottoText w-full   ">
