@@ -126,47 +126,47 @@ npx hardhat test
 
 **CONTRACT**
 
-**FUSDT** : 0x5EF12967a7dA58a30dAc806b20CD88D74ECa4702
-[https://mumbai.polygonscan.com/address/0x5EF12967a7dA58a30dAc806b20CD88D74ECa4702#code]
+**FUSDT** : 0x7aEcf9c9C656aC4044833B1387248ef2ed4579A3
+[https://sepolia.etherscan.io/address/0x7aEcf9c9C656aC4044833B1387248ef2ed4579A3#code]
 
-**ClaimVault** : 0xfe6364306822AB31e568aFe64CAb4023D0f072A6
-[https://mumbai.polygonscan.com/address/0xfe6364306822AB31e568aFe64CAb4023D0f072A6#code]
+**ClaimVault** : 0x648d987eBcA35883ddBCF518cb98A1d7d06F640D
+[https://sepolia.etherscan.io/address/0x648d987eBcA35883ddBCF518cb98A1d7d06F640D#code]
 
-**RewardVault** : 0x23f01521F9e47CC6C3B5819373483f24260914AA
-[https://mumbai.polygonscan.com/address/0x23f01521F9e47CC6C3B5819373483f24260914AA#code]
+**RewardVault** : 0xfE7e695790c6c004435362eBb2749c03BB72ACeF
+[https://sepolia.etherscan.io/address/0xfE7e695790c6c004435362eBb2749c03BB72ACeF#code]
 
-**TeamVault** : 0xcB506b57450fc5F309EbF33f345Be0bAAa828798
-[https://mumbai.polygonscan.com/address/0xcB506b57450fc5F309EbF33f345Be0bAAa828798#code]
+**TeamVault** : 0xac4Fbf6E6695DB522DDE41735318B4553B05aeb8
+[https://sepolia.etherscan.io/address/0xac4Fbf6E6695DB522DDE41735318B4553B05aeb8#code]
 
-**RaffleVault** : 0xbEa8227466BC8ff7439AB260e0dB3c8D5a26C81B
-[https://mumbai.polygonscan.com/address/0xbEa8227466BC8ff7439AB260e0dB3c8D5a26C81B#code]
+**RaffleVault** : 0x650FAB7D8d5F050aab057a7536eD9A6f5AAd00de
+[https://sepolia.etherscan.io/address/0x650FAB7D8d5F050aab057a7536eD9A6f5AAd00de#code]
 
-**FirstPlacePrizeVault** : 0xc1B39AABB9C563786E06bb2729e08dDd94cE6bD0
-[https://mumbai.polygonscan.com/address/0xc1B39AABB9C563786E06bb2729e08dDd94cE6bD0#code]
+**FirstPlacePrizeVault** : 0xf1764b91D0b0dC9970E17339dCE8386ef0337889
+[https://sepolia.etherscan.io/address/0xf1764b91D0b0dC9970E17339dCE8386ef0337889#code]
 
-**ERC20Prize(TEST-PRIZE)** : 0x89693454A4D9A4A49af63a05090f85cF32774538
-[https://mumbai.polygonscan.com/address/0x89693454A4D9A4A49af63a05090f85cF32774538#code]
+**ERC20Prize(TEST-PRIZE)** : 0xBE2637940e5eF970e7835CDC5124650ef36d0060
+[https://sepolia.etherscan.io/address/0xBE2637940e5eF970e7835CDC5124650ef36d0060#code]
 
-**ERC721Prize(TEST-PRIZE)** : 0x327056d5433513EB99b275fd57d9Da6d1F876569
-[https://mumbai.polygonscan.com/address/0x327056d5433513EB99b275fd57d9Da6d1F876569#code]
+**ERC721Prize(TEST-PRIZE)** : 0x0c1C4c73E4A94B559a1502c57176887550A4cf5A
+[https://sepolia.etherscan.io/address/0x0c1C4c73E4A94B559a1502c57176887550A4cf5A#code]
 
-**ERC1155Prize(TEST-PRIZE)** : 0x1e5Aab1Bf2db3e1931FAE3A8B6023f8cCA748AF5
-[https://mumbai.polygonscan.com/address/0x1e5Aab1Bf2db3e1931FAE3A8B6023f8cCA748AF5#code]
+**ERC1155Prize(TEST-PRIZE)** : 0x8FA15CbFCf5017B8E829f3368793819c00dA456C
+[https://sepolia.etherscan.io/address/0x8FA15CbFCf5017B8E829f3368793819c00dA456C#code]
 
-**Lottery** : 0xF8EB8d16BA7ba1618349935b2DDC929a0AD7ba9d
-[https://mumbai.polygonscan.com/address/0xF8EB8d16BA7ba1618349935b2DDC929a0AD7ba9d#code]
+**Lottery** : 0x104bE76855bC2Bb1748B41A9E97061A4c053F35f
+[https://sepolia.etherscan.io/address/0x104bE76855bC2Bb1748B41A9E97061A4c053F35f#code]
 
-**Raffle** : 0x80F9C901AB1d887b8d95b1cE0E697336CcDeD571
-[https://mumbai.polygonscan.com/address/0x80F9C901AB1d887b8d95b1cE0E697336CcDeD571#code]
+**Raffle** : 0x0423E6a9EFdE2c4e65bD062071D2dB5ed9986ffD
+[https://sepolia.etherscan.io/address/0x0423E6a9EFdE2c4e65bD062071D2dB5ed9986ffD#code]
 
-**RaffleUpKeep** : 0x7F746f1eB0fd3da2B5122708BFa369865E79A1c5
-[https://mumbai.polygonscan.com/address/0x7F746f1eB0fd3da2B5122708BFa369865E79A1c5#code]
+**RaffleUpKeep** : 0xc380d307a0d5081F72d8D0cD91FecDaB99ad63FE
+[https://sepolia.etherscan.io/address/0xc380d307a0d5081F72d8D0cD91FecDaB99ad63FE#code]
 
-**Staking** : 0x75f466B3FE06aA6cA9Ef4ff11e5886Bcd8043Eca
-[https://mumbai.polygonscan.com/address/0x75f466B3FE06aA6cA9Ef4ff11e5886Bcd8043Eca#code]
+**Staking** : 0x48E33Ae4c6F00511bdF4A8AFBF93D5D051ddCBFd
+[https://sepolia.etherscan.io/address/0x48E33Ae4c6F00511bdF4A8AFBF93D5D051ddCBFd#code]
 
-**ChainLinkRegister** : 0x41CCF581F2Ad4E4494A34fCCd600611983Dd76
-[https://mumbai.polygonscan.com/address/0x41CCF581F2Ad4E4494A34fCCd600611983Dd76#code]
+**ChainLinkRegister** : 0xbf7bc4bbdd7c77E7d116A2E685f4D6C7AfA30c45
+[https://sepolia.etherscan.io/address/0xbf7bc4bbdd7c77E7d116A2E685f4D6C7AfA30c45#code]
 
-**VRF** : 0x8FA15CbFCf5017B8E829f3368793819c00dA456C
-[https://mumbai.polygonscan.com/address/0x8FA15CbFCf5017B8E829f3368793819c00dA456C#code]
+**VRF** : 0xca443cc4185537B4b1BaC1020568bb5FB9c46C52
+[https://sepolia.etherscan.io/address/0xca443cc4185537B4b1BaC1020568bb5FB9c46C52#code]
