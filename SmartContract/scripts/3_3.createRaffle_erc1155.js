@@ -6,8 +6,8 @@ const { ethers } = hre;
 const ERC1155PrizeJson = require("../abis/Erc1155Prize.json");
 const RaffleJson = require("../abis/Raffle.json");
 const FusdtJson = require("../abis/fusdt.json");
-const AAVE_FAUCET_ON_MUMBAI = "0x2c95d10bA4BBEc79e562e8B3f48687751808C925";
-const USDT = "0x1fdE0eCc619726f4cD597887C9F3b4c8740e19e2";
+const AAVE_FAUCET_ON_SEPOLIA = "0xC959483DBa39aa9E78757139af0e9a2EDEb3f42D";
+const USDT = "0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0";
 
 async function main() {
   const [deployer] = await ethers.getSigners();
@@ -18,7 +18,7 @@ async function main() {
   // AAVE Faucet
   const aaveFaucet = await ethers.getContractAt(
     ["function mint(address token, address to, uint256 value) external"],
-    AAVE_FAUCET_ON_MUMBAI
+    AAVE_FAUCET_ON_SEPOLIA
   );
 
   // Token

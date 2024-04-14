@@ -3,15 +3,15 @@ const { ethers } = hre;
 
 const ChainLinkRegisterJson = require("../abis/ChainLinkRegister.json");
 const RaffleUpkeepJson = require("../abis/RaffleUpkeep.json");
-const LINK_ON_MUMBAI = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
-const VRF_COORDINATOR_ON_MUMBAI = "0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed";
+const LINK_ON_SEPOLIA = "0x779877A7B0D9E8603169DdbD7836e478b4624789";
+const VRF_COORDINATOR_ON_SEPOLIA = "0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625";
 async function main() {
   const vrfCoordinator = await ethers.getContractAt(
     [
       "function acceptSubscriptionOwnerTransfer(uint64 subId) external",
       "function getSubscription(uint64 subId) external view returns (uint96 balance, uint64 reqCount, address owner, address[] memory consumers)",
     ],
-    VRF_COORDINATOR_ON_MUMBAI
+    VRF_COORDINATOR_ON_SEPOLIA
   );
 
   const raffleUpkeep = await ethers.getContractAt(
@@ -22,7 +22,7 @@ async function main() {
     ChainLinkRegisterJson.abi,
     ChainLinkRegisterJson.address
   );
-  const link = await ethers.getContractAt("ILink", LINK_ON_MUMBAI);
+  const link = await ethers.getContractAt("ILink", LINK_ON_SEPOLIA);
   const [deployer] = await ethers.getSigners();
   const listBalance = await link.balanceOf(deployer.address);
   console.log(`Your $Link balance : ${listBalance}`);
@@ -102,7 +102,7 @@ async function main() {
   });
 
   /// Deposit Links under the id
-  tx = await link.approve(VRF_COORDINATOR_ON_MUMBAI, ethers.MaxUint256);
+  tx = await link.approve(VRF_COORDINATOR_ON_SEPOLIA, ethers.MaxUint256);
   await tx.wait().then(async (receipt) => {
     if (receipt && receipt.status == 1) {
       console.log(`Link is approved for deposit of the VRF subscription`);
@@ -113,7 +113,7 @@ async function main() {
 
   coder = ethers.AbiCoder.defaultAbiCoder();
   await link.transferAndCall(
-    VRF_COORDINATOR_ON_MUMBAI,
+    VRF_COORDINATOR_ON_SEPOLIA,
     ethers.parseEther("10"),
     coder.encode(["uint256"], [vrfId])
   );

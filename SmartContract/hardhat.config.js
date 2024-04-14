@@ -26,20 +26,21 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
-      polygonMumbai: process.env.MUMBAI_KEY,
+      // polygonMumbai: process.env.MUMBAI_KEY,
+      sepolia: process.env.ETHER_SCAN_KEY,
     },
   },
   networks: {
     hardhat: {
       forking: {
-        // mumbai
+        // seplolia
         url: process.env.RPC_URL,
       },
     },
 
-    mumbai: {
+    sepolia: {
       url: process.env.RPC_URL,
-      chainId: 80001,
+      chainId: 111_55_111,
       accounts: [process.env.MY_PRIVATE_TEST_KEY],
     },
   },

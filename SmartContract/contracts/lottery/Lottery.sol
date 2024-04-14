@@ -96,7 +96,7 @@ contract Lottery is LotteryStruct, AccessControl{
         intervalTime = 85800; /// Around 23 hrs and 50 mins
         announcingTime = 600; /// 10 mins
         startingBlock = block.number; /// This is for fethcing events
-        intervalBlock = 85800 / 2; /// intervalTime / 2s since the average time of mining block is 2s on mumbai/
+        intervalBlock = 85800 / 12; /// intervalTime / 12s since the average time of mining block is 12s on sepolia/
         price = 1 * 10 ** 6; /// 1 FUSDT 
         taxForTeamVault = 1000; // 10%
         taxForRewardVault = 2000; // 20%

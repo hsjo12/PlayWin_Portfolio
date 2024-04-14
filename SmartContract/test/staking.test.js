@@ -36,11 +36,11 @@ describe("Staking", () => {
     const DEFAULT_ADMIN_ROLE = ethers.ZeroHash;
     const MANAGER =
       "0xaf290d8680820aad922855f39b306097b20e28774d6c1ad35a20325630c3a02c";
-    const AAVE_POOL_ON_MUMBAI = "0xcC6114B983E4Ed2737E9BD3961c9924e6216c704";
+    const AAVE_POOL_ON_SEPOLIA = "0x6Ae43d3271ff6888e7Fc43Fd7321a503ff738951";
     it("Check if parameters are stored well through constructor", async () => {
       expect(await staking.USDT()).to.eq(usdt.target);
       expect(await staking.AAVE_USDT()).to.eq(aaveUSDT.target);
-      expect(await staking.AAVE_POOL()).to.eq(AAVE_POOL_ON_MUMBAI);
+      expect(await staking.AAVE_POOL()).to.eq(AAVE_POOL_ON_SEPOLIA);
       expect(await staking.LOTTERY()).to.eq(lottery.target);
       expect(await staking.REWARD_VAULT()).to.eq(rewardVault.target);
       expect(await staking.TEAM_VAULT()).to.eq(teamVault.target);

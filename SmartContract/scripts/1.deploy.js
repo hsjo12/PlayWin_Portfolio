@@ -5,20 +5,19 @@ const { ethers } = hre;
 
 const MANAGER =
   "0xaf290d8680820aad922855f39b306097b20e28774d6c1ad35a20325630c3a02c";
-const AAVE_FAUCET_ON_MUMBAI = "0x2c95d10bA4BBEc79e562e8B3f48687751808C925";
-const USDT = "0x1fdE0eCc619726f4cD597887C9F3b4c8740e19e2";
-const USDT_AAVE_TOKEN_ON_MUMBAI = "0x5F3a71D07E95C1E54B9Cc055D418a219586A3473";
-const AAVE_POOL_ON_MUMBAI = "0xcC6114B983E4Ed2737E9BD3961c9924e6216c704";
-const LINK_WHALE_MUMBAI = "0x71C05a4eA5E9d5b1Ac87Bf962a043f5265d4Bdc8";
-const LINK_ON_MUMBAI = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
-const REGISTRAR_ON_MUMBAI = "0xb58E509b59538256854b2a223289160F83B23F92";
-const VRF_COORDINATOR_ON_MUMBAI = "0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed";
-const VRF_HASH_ON_MUMBAI =
-  "0x4b09e658ed251bcafeebbc69400383d49f344ace09b9576fe248bb02c003fe9f";
-const VRF_GAS_LIMIT = 2500000;
+const AAVE_FAUCET_ON_SEPOLIA = "0xC959483DBa39aa9E78757139af0e9a2EDEb3f42D";
+const USDT = "0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0";
+const USDT_AAVE_TOKEN_ON_SEPOLIA = "0xAF0F6e8b0Dc5c913bbF4d14c22B4E78Dd14310B6";
+const AAVE_POOL_ON_SEPOLIA = "0x6Ae43d3271ff6888e7Fc43Fd7321a503ff738951";
+const LINK_ON_SEPOLIA = "0x779877A7B0D9E8603169DdbD7836e478b4624789";
+const REGISTRAR_ON_SEPOLIA = "0xb0E49c5D0d05cbc241d68c05BC5BA1d1B7B72976";
+const VRF_COORDINATOR_ON_SEPOLIA = "0x8103B0A8A00be2DDC778e6e7eaa21791Cd364625";
+const VRF_HASH_ON_SEPOLIA =
+  "0x474e34a077df58807dbe9c96d3c009b23b3c6d0cce433e59bbf5b34f823bc56c";
+const VRF_GAS_LIMIT = 2_500_000;
 
 async function main() {
-  const LOTTERY_STARTING_TIME = 1712898000; //Math.floor(new Date() / 1000) + 60; // starting In 60s
+  const LOTTERY_STARTING_TIME = Math.floor(new Date() / 1000) + 600; // starting In 600s
 
   const [deployer] = await ethers.getSigners();
 
@@ -27,12 +26,12 @@ async function main() {
   // AAVE_USDT_Token
   const aaveUSDT = await ethers.getContractAt(
     "IERC20",
-    USDT_AAVE_TOKEN_ON_MUMBAI
+    USDT_AAVE_TOKEN_ON_SEPOLIA
   );
   // AAVE Faucet
   const aaveFaucet = await ethers.getContractAt(
     ["function mint(address token, address to, uint256 value) external"],
-    AAVE_FAUCET_ON_MUMBAI
+    AAVE_FAUCET_ON_SEPOLIA
   );
 
   // Token
@@ -98,8 +97,8 @@ async function main() {
   const RaffleUpkeep = await ethers.getContractFactory("RaffleUpkeep");
   const raffleUpkeep = await RaffleUpkeep.deploy(
     raffle.target,
-    VRF_COORDINATOR_ON_MUMBAI,
-    VRF_HASH_ON_MUMBAI,
+    VRF_COORDINATOR_ON_SEPOLIA,
+    VRF_HASH_ON_SEPOLIA,
     VRF_GAS_LIMIT,
     deployer.address
   );
@@ -108,8 +107,8 @@ async function main() {
   const Staking = await ethers.getContractFactory("Staking");
   const staking = await Staking.deploy(
     USDT,
-    USDT_AAVE_TOKEN_ON_MUMBAI,
-    AAVE_POOL_ON_MUMBAI,
+    USDT_AAVE_TOKEN_ON_SEPOLIA,
+    AAVE_POOL_ON_SEPOLIA,
     lottery.target,
     rewardVault.target,
     teamVault.target
@@ -121,9 +120,9 @@ async function main() {
     "ChainLinkRegister"
   );
   const chainLinkRegister = await ChainLinkRegister.deploy(
-    LINK_ON_MUMBAI,
-    REGISTRAR_ON_MUMBAI,
-    VRF_COORDINATOR_ON_MUMBAI
+    LINK_ON_SEPOLIA,
+    REGISTRAR_ON_SEPOLIA,
+    VRF_COORDINATOR_ON_SEPOLIA
   );
   /// Give an access
   await raffleVault.grantRole(MANAGER, raffle.target);
@@ -218,8 +217,8 @@ async function main() {
   // RaffleUpkeep
   await verify(raffle.target, [
     raffle.target,
-    VRF_COORDINATOR_ON_MUMBAI,
-    VRF_HASH_ON_MUMBAI,
+    VRF_COORDINATOR_ON_SEPOLIA,
+    VRF_HASH_ON_SEPOLIA,
     VRF_GAS_LIMIT,
     deployer.address,
   ]);
@@ -227,8 +226,8 @@ async function main() {
   // Staking
   await verify(staking.target, [
     USDT,
-    USDT_AAVE_TOKEN_ON_MUMBAI,
-    AAVE_POOL_ON_MUMBAI,
+    USDT_AAVE_TOKEN_ON_SEPOLIA,
+    AAVE_POOL_ON_SEPOLIA,
     lottery.target,
     rewardVault.target,
     teamVault.target,
@@ -256,11 +255,11 @@ const writeDeployedContractInfo = async (contract, contractName, fileName) => {
 };
 
 const gainFUSDT = async (fusdt, userList) => {
-  const USDT = "0x1fdE0eCc619726f4cD597887C9F3b4c8740e19e2";
-  const AAVE_FAUCET_ON_MUMBAI = "0x2c95d10bA4BBEc79e562e8B3f48687751808C925";
+  const AAVE_FAUCET_ON_SEPOLIA = "0xC959483DBa39aa9E78757139af0e9a2EDEb3f42D";
+  const USDT = "0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0";
   const aaveFaucet = await ethers.getContractAt(
     ["function mint(address token, address to, uint256 value) external"],
-    AAVE_FAUCET_ON_MUMBAI
+    AAVE_FAUCET_ON_SEPOLIA
   );
   const usdt = await ethers.getContractAt("IERC20", USDT);
 

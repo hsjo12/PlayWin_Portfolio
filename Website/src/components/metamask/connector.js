@@ -24,22 +24,23 @@ export const connectMetamask = async () => {
 };
 
 export const chainCheck = async (chainId) => {
+  console.log("chainId", chainId);
   if (chainId !== String(process.env.NEXT_PUBLIC_CHAIN_ID)) {
-    toastMessage(`Please use "Mumbai" chain`, "warn");
+    toastMessage(`Please use "sepolia" chain`, "warn");
     try {
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: "0x13881" }],
+        params: [{ chainId: "0xaa36a7" }],
       });
     } catch (switchError) {
       if (switchError.code === 4902 || switchError.code === -32603) {
-        toastMessage(`Please add "Mumbai" chain`, "warn");
+        toastMessage(`Please add "sepolia" chain`, "warn");
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
           params: [
             {
-              chainId: "0x13881",
-              chainName: "Mumbai",
+              chainId: "0xaa36a7",
+              chainName: "sepolia",
               rpcUrls: ["https://rpc-mumbai.maticvigil.com"],
 
               nativeCurrency: {
