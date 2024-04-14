@@ -33,7 +33,3 @@ cron.schedule(
     timezone: "Asia/Seoul", // Adjust timezone according to your location
   }
 );
-
-(async () => {
-  await requestVRFNumber();
-})();
