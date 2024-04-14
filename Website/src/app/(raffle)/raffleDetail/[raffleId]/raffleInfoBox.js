@@ -265,7 +265,7 @@ export default function RaffleInfoBox({ raffleId }) {
                   <button className="biggerInfoText w-full">
                     <Link
                       className="w-full flex justify-center subTitle"
-                      href={`https://testnets.opensea.io/assets/mumbai/${raffleInfo.prize}`}
+                      href={`https://testnets.opensea.io/assets/sepolia/${raffleInfo.prize}`}
                       target="_blank"
                     >
                       GO TO OPENSEA <CiLink />
@@ -311,7 +311,7 @@ export default function RaffleInfoBox({ raffleId }) {
                 <button className="biggerInfoText">
                   <Link
                     className="subTitle w-full flex "
-                    href={`https://mumbai.polygonscan.com/tx/${raffleInfo.txHash}`}
+                    href={`https://sepolia.etherscan.io/tx/${raffleInfo.txHash}`}
                     target="_blank"
                   >
                     {`${raffleInfo.creator.slice(

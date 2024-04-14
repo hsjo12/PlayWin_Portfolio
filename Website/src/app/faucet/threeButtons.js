@@ -54,7 +54,9 @@ export default function ThreeButtons() {
     <>
       <div className="btnText flex flex-col md:grid md:grid-cols-3 w-full gap-5 p-2">
         <button className="btn p-1">
-          <Link href="https://mumbaifaucet.com/">Get MATIC</Link>
+          <Link href="https://www.alchemy.com/faucets/ethereum-sepolia">
+            Get ETH
+          </Link>
         </button>
         <button onClick={faucet} className="btn p-1">
           Faucet USDT

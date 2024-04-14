@@ -11,7 +11,7 @@ export default function UserInfo({
         <p className="infoText">
           User : {`${user.slice(0, 7)}...${user.slice(-4)}`}
         </p>
-        <p className="infoText">{`User MATIC balance : ${maticBalance} MATIC`}</p>
+        <p className="infoText">{`User ETH balance : ${maticBalance} ETH`}</p>
         <p className="infoText">{`User USDT balance : ${usdtBalance} USDT`}</p>
         <p className="infoText">{`User FUSDT balance : ${fusdtBalance} FUSDT`}</p>
       </div>

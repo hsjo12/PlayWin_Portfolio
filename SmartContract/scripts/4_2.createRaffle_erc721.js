@@ -35,8 +35,10 @@ async function main() {
   // Raffle
   const raffle = await ethers.getContractAt(RaffleJson.abi, RaffleJson.address);
 
+  const len = 10;
+
   ///Mint USDT
-  await Array(10)
+  await Array(len)
     .fill(0)
     .reduce(async (acc, cv) => {
       await acc;
@@ -54,7 +56,7 @@ async function main() {
   await tx.wait();
 
   /// Wrap USDT to FUSDT
-  tx = await fusdt.wrapUSDT(ethers.parseUnits("30", 6));
+  tx = await fusdt.wrapUSDT(ethers.parseUnits(String(30 * len), 6));
   await tx.wait();
   console.log("USDT WRapping...");
 
@@ -65,9 +67,10 @@ async function main() {
   /// erc721Prize approval
   tx = await erc721Prize.setApprovalForAll(raffle.target, true);
   await tx.wait();
+
   const currentId = Number(await erc721Prize.id());
   /// mint NFT
-  await Array(10)
+  await Array(len)
     .fill(0)
     .reduce(async (acc, cv) => {
       await acc;
@@ -78,7 +81,7 @@ async function main() {
 
   const entryPrice = ethers.parseUnits("1", 6);
 
-  await Array(10)
+  await Array(len)
     .fill(0)
     .map((v, i) => i + currentId)
     .reduce(async (acc, nft_id) => {
@@ -86,7 +89,7 @@ async function main() {
       const deadline =
         Math.floor(new Date().getTime() / 1000) +
         Math.floor(Math.random() * 10000) +
-        130 * 86400;
+        95 * 86400;
       const erc721RaffleInfo = createErc721RaffleInfoParam(
         erc721Prize.target,
         deployer.address,
@@ -103,7 +106,7 @@ async function main() {
           console.log("Tx is failed");
         }
       });
-      await holdOn(10000);
+      await holdOn(3000);
     }, Promise.resolve());
 
   console.log("ERC721Raffle is created...");

@@ -124,7 +124,7 @@ async function main() {
     REGISTRAR_ON_SEPOLIA,
     VRF_COORDINATOR_ON_SEPOLIA
   );
-  /// Give an access
+  /// Give an access, if it does not work well, run 2.grantRoles.js
   await raffleVault.grantRole(MANAGER, raffle.target);
   await raffle.grantRole(MANAGER, raffleUpkeep.target);
   await staking.grantRole(MANAGER, lottery.target);

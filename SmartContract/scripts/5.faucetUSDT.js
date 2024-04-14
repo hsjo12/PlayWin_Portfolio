@@ -26,7 +26,7 @@ async function main() {
       let tx = await aaveFaucet.mint(
         USDT,
         deployer.address,
-        ethers.parseUnits("10", 6)
+        ethers.parseUnits("20", 6)
       );
       await tx.wait();
       console.log("USDT Mint...");
