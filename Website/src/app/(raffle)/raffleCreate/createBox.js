@@ -190,6 +190,7 @@ export default function CreateBox() {
         maxUserEntries,
         minUserEntries,
       } = inputValue;
+
       const raffle = await getContract(raffleJson.address, raffleJson.abi);
       const fusdtInstance = await getContract(fusdtJson.address, fusdtJson.abi);
       const depositAmountOfFusdt = await raffle.depositAmount();
@@ -275,6 +276,7 @@ export default function CreateBox() {
       const winningEntryNumber = 0;
       const totalEntries = 0;
 
+      prizeAmount = !prizeAmount ? 1 : prizeAmount;
       const raffleInfoParams = [
         prizeType,
         status_pending,
@@ -331,7 +333,7 @@ export default function CreateBox() {
         <input
           required
           className="inputStyle"
-          value={ref.prizeType === 1 ? "1" : inputValue.prizeAmount}
+          value={Number(ref.prizeType) === 1 ? "1" : inputValue.prizeAmount}
           onChange={onChangePrizeAmount}
           name="prizeAmount"
           type="number"
@@ -511,7 +513,7 @@ const prizeOwnerValidation = async (
     const ownerOfPrizeId = ethers.getAddress(
       await erc721Instance.ownerOf(prizeId)
     );
-    const user = ethers.getAddress(user);
+    user = ethers.getAddress(user);
     if (user !== ownerOfPrizeId)
       return toastMessage("You are not the owner of this prize", "warn");
 
