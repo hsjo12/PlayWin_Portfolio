@@ -76,13 +76,12 @@ export default function RootLayout({ children }) {
       >
         <PlayWInContextAPI>
           <ToastContainer />
-          <ParticlesContainer>
-            <ScreenDetector />
-            <WalletKeeper />
-            <Header />
-            {children}
-            <Footer />
-          </ParticlesContainer>
+          <ScreenDetector />
+          <WalletKeeper />
+          <ParticlesContainer />
+          <Header />
+          <div className="mt-20">{children}</div>
+          <Footer />
         </PlayWInContextAPI>
       </body>
     </html>

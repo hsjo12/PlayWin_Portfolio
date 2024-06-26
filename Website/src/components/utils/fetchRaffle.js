@@ -47,14 +47,9 @@ export const oldestOrder = async (
     }
   }
 
-  await fetchedEventList.slice(0, offset).reduce(async (acc, cv) => {
-    await acc;
-
-    const raffleInfo = await raffle.raffleInfo(cv.args.raffleId);
-
-    // only push the active raffle
+  const promises = fetchedEventList.slice(0, offset).map(async (v) => {
     if (getActiveType(activeType, raffleInfo.status)) {
-      fetchedRaffleList.push({
+      return {
         raffleId: cv.args.raffleId,
         prize: raffleInfo.prize, // prize address
         prizeAmount: raffleInfo.prizeAmount,
@@ -62,9 +57,13 @@ export const oldestOrder = async (
         prizeId: raffleInfo.prizeId, // if it is a nft
         entryPrice: raffleInfo.entryPrice,
         deadline: raffleInfo.deadline,
-      });
+      };
     }
-  }, Promise.resolve());
+    return null;
+  });
+
+  const results = await Promise.all(promises);
+  fetchedRaffleList.push(...results.filter((v) => v !== null));
 
   if (fromIndexForMain.current + offset >= currentId) {
     // if current index and current id are equal, meaning that there is no need to fetch,
@@ -117,16 +116,12 @@ export const newestOrder = async (
     }
   }
 
-  await fetchedEventList
+  const promises = fetchedEventList
     .reverse()
     .slice(0, offset)
-    .reduce(async (acc, cv) => {
-      await acc;
-
-      const raffleInfo = await raffle.raffleInfo(cv.args.raffleId);
-
+    .map(async (v) => {
       if (getActiveType(activeType, raffleInfo.status)) {
-        fetchedRaffleList.push({
+        return {
           raffleId: cv.args.raffleId,
           prize: raffleInfo.prize, // prize address
           prizeAmount: raffleInfo.prizeAmount,
@@ -134,9 +129,13 @@ export const newestOrder = async (
           prizeId: raffleInfo.prizeId, // if it is a nft
           entryPrice: raffleInfo.entryPrice,
           deadline: raffleInfo.deadline,
-        });
+        };
       }
-    }, Promise.resolve());
+      return null;
+    });
+
+  const result = await Promise.all(promises);
+  fetchedRaffleList.push(...result.filter((v) => v !== null));
 
   fromIndexForMain.current =
     fromIndexForMain.current - offset < 1
@@ -150,7 +149,7 @@ export const timeEndSoon = async (fromIndexForMain, offset, itemType) => {
   const raffle = getContractForReadOnly(raffleJson.address, raffleJson.abi);
 
   if (fromIndexForMain.noMoreLoadInTimeEndOrder) return [];
-  const fetchedRaffleList = [];
+  let fetchedRaffleList = [];
   let loop = true;
 
   while (loop) {
@@ -164,22 +163,25 @@ export const timeEndSoon = async (fromIndexForMain, offset, itemType) => {
       break;
     }
 
-    await Array.from(allFetchedRaffleList).reduce(async (acc, cv) => {
-      await acc;
-      const raffleInfo = await raffle.raffleInfo(cv.raffleId);
-      if (cv.raffleId !== 0n && getItemType(itemType, raffleInfo.prizeType)) {
-        fetchedRaffleList.push({
-          raffleId: cv.raffleId,
+    const promises = Array.from(allFetchedRaffleList).map(async (v, i) => {
+      const raffleInfo = await raffle.raffleInfo(v.raffleId);
+      if (v.raffleId !== 0n && getItemType(itemType, raffleInfo.prizeType)) {
+        return {
+          raffleId: v.raffleId,
           prize: raffleInfo.prize, // prize address
           prizeAmount: raffleInfo.prizeAmount,
           prizeType: raffleInfo.prizeType,
           prizeId: raffleInfo.prizeId, // if it is a nft
           entryPrice: raffleInfo.entryPrice,
           deadline: raffleInfo.deadline,
-          nextRaffleId: cv.nextRaffleId,
-        });
+          nextRaffleId: v.nextRaffleId,
+        };
       }
-    }, Promise.resolve());
+      return null;
+    });
+
+    const results = await Promise.all(promises);
+    fetchedRaffleList.push(...results.filter((v) => v !== null));
 
     let allFetchedRaffleListLength = allFetchedRaffleList.length;
     fromIndexForMain.current =
@@ -229,14 +231,12 @@ export const timeEndSoonForInActiveRaffles = async (
       fromIndexForMain.current,
       offset
     );
-    await Array.from(inactiveRaffleIds).reduce(async (acc, cv) => {
-      await acc;
 
-      const raffleInfo = await raffleInstance.raffleInfo(cv);
-
-      if (cv !== 0n && getItemType(itemType, raffleInfo.prizeType)) {
-        fetchedInActiveRaffleList.push({
-          raffleId: cv,
+    const promises = Array.from(inactiveRaffleIds).map(async (v, i) => {
+      const raffleInfo = await raffleInstance.raffleInfo(v);
+      if (v !== 0n && getItemType(itemType, raffleInfo.prizeType)) {
+        return {
+          raffleId: v,
           prize: raffleInfo.prize, // prize address
           prizeAmount: raffleInfo.prizeAmount,
           prizeType: raffleInfo.prizeType,
@@ -244,9 +244,14 @@ export const timeEndSoonForInActiveRaffles = async (
           entryPrice: raffleInfo.entryPrice,
           deadline: raffleInfo.deadline,
           status: raffleInfo.status,
-        });
+        };
       }
-    }, Promise.resolve());
+      return null;
+    });
+
+    fetchedInActiveRaffleList = await Promise.all(
+      promises.filter((v) => v !== null)
+    );
 
     fromIndexForMain.current = fromIndexForMain.current + offset;
 
@@ -307,16 +312,15 @@ export const fetchOldestMyEntryList = async (
       fromIndexForMyEntries.current,
       offset
     );
-    await Array.from(joinedRaffleIds).reduce(async (acc, cv) => {
-      await acc;
 
-      const raffleInfo = await raffleInstance.raffleInfo(cv);
+    const promises = Array.from(joinedRaffleIds).map(async (v) => {
+      const raffleInfo = await raffleInstance.raffleInfo(v);
       if (
         cv !== 0n &&
         getItemType(itemType, raffleInfo.prizeType) &&
         getActiveType(activeType, raffleInfo.status)
       ) {
-        fetchedRaffleList.push({
+        return {
           raffleId: cv,
           prize: raffleInfo.prize, // prize address
           prizeAmount: raffleInfo.prizeAmount,
@@ -325,9 +329,14 @@ export const fetchOldestMyEntryList = async (
           entryPrice: raffleInfo.entryPrice,
           deadline: raffleInfo.deadline,
           status: raffleInfo.status,
-        });
+        };
       }
-    }, Promise.resolve());
+
+      return null;
+    });
+
+    const results = await Promise.all(promises);
+    fetchedRaffleList.push(...results.filter((v) => v !== null));
 
     fromIndexForMyEntries.current = fromIndexForMyEntries.current + offset;
     if (
@@ -374,19 +383,14 @@ export const fetchTimeEndEntryListOfMine = async (
       : 0;
   loopingTimes = leftOverDataAfterLoop !== 0 ? loopingTimes + 1 : loopingTimes; /// The reason plus 1 (loopingTimes + 1) is to fetch the leftover data
 
-  await Array(loopingTimes)
+  const promises = Array(loopingTimes)
     .fill(0)
-    .map((v, i) => i)
-    .reduce(async (acc, cv) => {
-      await acc;
-      const index = cv * fetchingSize;
-      const fetchedData = await raffleInstance.getUserJoinedRaffleList(
-        user,
-        index,
-        fetchingSize
-      );
-      userEntryList = [...userEntryList, ...fetchedData];
-    }, Promise.resolve());
+    .map((v, i) => {
+      const index = i * fetchingSize;
+      return raffleInstance.getUserJoinedRaffleList(user, index, fetchingSize);
+    });
+  const results = await Promise.all(promises);
+  userEntryList = results.flat();
 
   if (leftOverDataAfterLoop !== 0) {
     const fetchedData = await raffleInstance.getUserJoinedRaffleList(
@@ -407,17 +411,16 @@ export const fetchTimeEndEntryListOfMine = async (
     if (raffleList.length === 0) {
       break;
     }
-    await Array.from(raffleList).reduce(async (acc, cv) => {
-      await acc;
-      const raffleInfo = await raffleInstance.raffleInfo(cv.raffleId);
 
+    const promises = Array.from(raffleList).map(async (v) => {
+      const raffleInfo = await raffleInstance.raffleInfo(v.raffleId);
       if (
         userEntryList.includes(cv.raffleId) &&
         cv.raffleId !== 0n &&
         getItemType(itemType, raffleInfo.prizeType) &&
         getActiveType(activeType, raffleInfo.status)
       ) {
-        fetchedRaffleList.push({
+        return {
           raffleId: cv.raffleId,
           prize: raffleInfo.prize, // prize address
           prizeAmount: raffleInfo.prizeAmount,
@@ -426,9 +429,13 @@ export const fetchTimeEndEntryListOfMine = async (
           entryPrice: raffleInfo.entryPrice,
           deadline: raffleInfo.deadline,
           nextRaffleId: cv.nextRaffleId,
-        });
+        };
       }
-    }, Promise.resolve());
+      return null;
+    });
+
+    const results = await Promise.all(promises);
+    fetchedRaffleList.push(...results.filter((v) => v !== null));
 
     let raffleListLength = raffleList.length;
     fromIndexForMyEntries.current =
@@ -497,16 +504,15 @@ export const fetchNewestMyEntryList = async (
       startTempIndex,
       offset
     );
-    await Array.from(joinedRaffleIds).reduce(async (acc, cv) => {
-      await acc;
 
-      const raffleInfo = await raffleInstance.raffleInfo(cv);
+    const promises = Array.from(joinedRaffleIds).map(async (v) => {
+      const raffleInfo = await raffleInstance.raffleInfo(v);
       if (
         cv !== 0n &&
         getItemType(itemType, raffleInfo.prizeType) &&
         getActiveType(activeType, raffleInfo.status)
       ) {
-        fetchedRaffleList.push({
+        return {
           raffleId: cv,
           prize: raffleInfo.prize, // prize address
           prizeAmount: raffleInfo.prizeAmount,
@@ -515,9 +521,13 @@ export const fetchNewestMyEntryList = async (
           entryPrice: raffleInfo.entryPrice,
           deadline: raffleInfo.deadline,
           status: raffleInfo.status,
-        });
+        };
       }
-    }, Promise.resolve());
+      return null;
+    });
+
+    const results = await Promise.all(promises);
+    fetchedRaffleList.push(...results.filter((v) => v !== null));
 
     fromIndexForMyEntries.current = fromIndexForMyEntries.current + offset;
     startTempIndex += offset;
@@ -565,17 +575,14 @@ export const fetchOldestMyListing = async (
       offset
     );
 
-    await Array.from(createdRaffleIds).reduce(async (acc, cv) => {
-      await acc;
-
-      const raffleInfo = await raffleInstance.raffleInfo(cv);
-
+    const promises = Array.from(createdRaffleIds).map(async (v) => {
+      const raffleInfo = await raffleInstance.raffleInfo(v);
       if (
         cv !== 0n &&
         getItemType(itemType, raffleInfo.prizeType) &&
         getActiveType(activeType, raffleInfo.status)
       ) {
-        fetchedCreatedRaffleList.push({
+        return {
           raffleId: cv,
           prize: raffleInfo.prize, // prize address
           prizeAmount: raffleInfo.prizeAmount,
@@ -584,9 +591,13 @@ export const fetchOldestMyListing = async (
           entryPrice: raffleInfo.entryPrice,
           deadline: raffleInfo.deadline,
           status: raffleInfo.status,
-        });
+        };
       }
-    }, Promise.resolve());
+      return null;
+    });
+
+    const results = await Promise.all(promises);
+    fetchedCreatedRaffleList.push(...results.filter((v) => v !== null));
 
     fromIndexForMyListing.current = fromIndexForMyListing.current + offset;
 
@@ -628,16 +639,14 @@ export const fetchEndTimeMyListing = async (
       break;
     }
 
-    await Array.from(raffleList).reduce(async (acc, cv) => {
-      await acc;
-      const raffleInfo = await raffleInstance.raffleInfo(cv.raffleId);
+    const promises = Array.from(raffleList).map(async (v) => {
       if (
         ethers.getAddress(raffleInfo.creator) === ethers.getAddress(user) &&
         cv.raffleId !== 0n &&
         getItemType(itemType, raffleInfo.prizeType) &&
         getActiveType(activeType, raffleInfo.status)
       ) {
-        fetchedRaffleList.push({
+        return {
           raffleId: cv.raffleId,
           prize: raffleInfo.prize, // prize address
           prizeAmount: raffleInfo.prizeAmount,
@@ -646,9 +655,13 @@ export const fetchEndTimeMyListing = async (
           entryPrice: raffleInfo.entryPrice,
           deadline: raffleInfo.deadline,
           nextRaffleId: cv.nextRaffleId,
-        });
+        };
       }
-    }, Promise.resolve());
+      return null;
+    });
+
+    const results = await Promise.all(promises);
+    fetchedRaffleList.push(...results.filter((v) => v !== null));
 
     let raffleListLength = raffleList.length;
     fromIndexForMyListing.current =
@@ -716,9 +729,7 @@ export const fetchNewestMyListing = async (
       offset
     );
 
-    await Array.from(createdRaffleIds).reduce(async (acc, cv) => {
-      await acc;
-
+    const promises = createdRaffleIds.map(async (cv) => {
       const raffleInfo = await raffleInstance.raffleInfo(cv);
 
       if (
@@ -726,7 +737,7 @@ export const fetchNewestMyListing = async (
         getItemType(itemType, raffleInfo.prizeType) &&
         getActiveType(activeType, raffleInfo.status)
       ) {
-        fetchedCreatedRaffleList.push({
+        return {
           raffleId: cv,
           prize: raffleInfo.prize, // prize address
           prizeAmount: raffleInfo.prizeAmount,
@@ -735,9 +746,13 @@ export const fetchNewestMyListing = async (
           entryPrice: raffleInfo.entryPrice,
           deadline: raffleInfo.deadline,
           status: raffleInfo.status,
-        });
+        };
       }
-    }, Promise.resolve());
+      return null;
+    });
+
+    const results = await Promise.all(promises);
+    fetchedCreatedRaffleList.push(...results.filter((v) => v !== null));
 
     fromIndexForMyListing.current = fromIndexForMyListing.current + offset;
     startTempIndex += offset;

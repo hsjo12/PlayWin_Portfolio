@@ -7,7 +7,7 @@ import { loadSlim } from "@tsparticles/slim"; // if you are going to use `loadSl
 import WebPageLoading from "../utils/webPageLoading";
 // import { loadBasic } from "@tsparticles/basic"; // if you are going to use `loadBasic`, install the "@tsparticles/basic" package too.
 
-export default function ParticlesComponent({ children }) {
+export default function ParticlesComponent() {
   const [init, setInit] = useState(false);
 
   // this should be run only once per application lifetime
@@ -36,6 +36,7 @@ export default function ParticlesComponent({ children }) {
           value: "#030303",
         },
       },
+
       fpsLimit: 120,
       interactivity: {
         events: {
@@ -100,12 +101,7 @@ export default function ParticlesComponent({ children }) {
     []
   );
   if (init) {
-    return (
-      <>
-        <Particles id="tsparticles" options={options} />
-        {children}
-      </>
-    );
+    return <Particles id="tsparticles" options={options} />;
   } else {
     return (
       <>
