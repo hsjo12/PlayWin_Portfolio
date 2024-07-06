@@ -37,7 +37,6 @@ export default function RaffleList() {
           );
         } else {
           /// inActive
-
           fetchedRaffleList = await timeEndSoonForInActiveRaffles(
             fromIndexForMain,
             offset,
@@ -63,6 +62,9 @@ export default function RaffleList() {
             itemType,
             activeType
           );
+
+          console.log(`fetchedRaffleList`, fetchedRaffleList);
+
           if (raffleList !== null) {
             setRaffleList([...raffleList, ...fetchedRaffleList]);
           } else {
