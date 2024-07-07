@@ -53,3 +53,29 @@
     border-color: black;
   }
 }
+
+.loader {
+  @apply w-10 h-10 ease-linear border-4 border-gray-200 rounded-full;
+  border-top-color: #3c83f6;
+  animation: spinner 1.2s linear infinite;
+}
+.smallLoader {
+  @apply w-8 h-8 ease-linear border-4 border-gray-200 rounded-full;
+  border-top-color: #3c83f6;
+  animation: spinner 1.2s linear infinite;
+}
+
+.hugeLoader {
+  @apply w-20 h-20 ease-linear border-8 border-gray-200 rounded-full;
+  border-top-color: #3c83f6;
+  animation: spinner 1.2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

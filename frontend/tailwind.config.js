@@ -11,7 +11,7 @@ module.exports = {
         xs: "475px",
       },
       colors: {
-        "highlight-color": "#eba000",
+        "highlight-color": "#ffc600",
       },
       fontFamily: {
         bebas_neue: ["var(--bebas_neue)"],

@@ -42,6 +42,20 @@
   }
 }
 
+/* SELECT */
+.selectStyle > select {
+  border: none;
+  outline: none;
+
+  background-color: #2e2e2e;
+  box-shadow: 5px 5px 10px #000000;
+  @apply font-bebas_neue md:w-[20%] w-[90%];
+}
+
+.selectStyle > select:focus {
+  outline: none;
+}
+
 /* Box */
 
 .box {
@@ -50,6 +64,14 @@
   background-color: #00112ca1;
   box-shadow: 5px 5px 10px #000000;
   @apply w-full text-[whitesmoke] rounded-3xl;
+}
+
+.raffleCard {
+  padding: 0.5rem;
+  width: 100%;
+  background-color: #2e2e2e;
+  box-shadow: 5px 5px 10px #000000;
+  @apply w-full text-[whitesmoke] rounded-2xl;
 }
 
 /* BTN */
@@ -106,4 +128,12 @@
   background-size: cover;
   background-position: center;
   height: 100vh;
+}
+
+.imageContainer {
+  img {
+    position: relative !important;
+    object-fit: cover;
+    @apply max-w-[160] xs:max-w-[250px] sm:max-w-[200px] rounded-2xl;
+  }
 }

@@ -1,5 +1,5 @@
 import { ContextAPI } from "../contextAPI/playWinContextAPI";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 
 export default function Hero() {
   const { sectionRefs } = useContext(ContextAPI);

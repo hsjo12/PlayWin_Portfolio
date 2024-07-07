@@ -79,10 +79,10 @@ export default function Header() {
   return (
     <div
       className={`w-full fixed top-0 left-0 z-10 ${
-        navBg ? "bg-[#1a0f36]" : ""
+        navBg ? "bg-[#424242]" : ""
       }`}
     >
-      <nav className="w-[95%] mx-auto flex justify-around items-center gap-3">
+      <nav className="w-[95%] mx-auto flex justify-between items-center gap-3 font-bebas_neue">
         <Link href="./">
           <p className="logo textBtn">PLAYWIN</p>
         </Link>
@@ -90,7 +90,7 @@ export default function Header() {
           return (
             <button
               key={i}
-              className={`textBtn ${
+              className={`textBtn  ${
                 currentPosition === section ? "text-highlight-color" : ""
               }`}
               onClick={() => scrollToSection(section)}
@@ -102,7 +102,7 @@ export default function Header() {
           );
         })}
 
-        <Link href="./">
+        <Link href="/raffleIndex">
           <p className="textBtn">Raffle</p>
         </Link>
         <Link href="./">
