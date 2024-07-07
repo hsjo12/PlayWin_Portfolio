@@ -44,7 +44,7 @@ export default function ItemCard({ info }) {
           <Loading />
         </div>
       ) : (
-        <div className="w-full flex flex-col justify-center items-center imageContainer">
+        <div className="w-full flex flex-col justify-center items-center relative imageContainer">
           <Image
             src={metadata.image}
             alt="Raffle Image"

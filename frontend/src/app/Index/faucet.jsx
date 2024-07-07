@@ -13,8 +13,7 @@ import { toastMessage, txMessage } from "@/utils/toastMessage";
 import { ContextAPI } from "../contextAPI/playWinContextAPI";
 require("dotenv").config();
 export default function Faucet() {
-  const { update, setUpdate, sectionRefs, animationOnBySection } =
-    useContext(ContextAPI);
+  const { update, sectionRefs, animationOnBySection } = useContext(ContextAPI);
   const { address, isConnected } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
   const [ethBalance, setEthBalance] = useState(0);
@@ -46,7 +45,7 @@ export default function Faucet() {
     setEthBalance(formattedBalance(ethBalance, 18));
     setUsdtBalance(formattedBalance(usdtBalance, 6));
     setFusdtBalance(formattedBalance(fusdtBalance, 6));
-  }, [address, isConnected, update]);
+  }, [address, isConnected, update, walletProvider]);
 
   const faucet = useCallback(async () => {
     try {
@@ -71,7 +70,7 @@ export default function Faucet() {
       console.log(error);
       return toastMessage("Transaction failed", "error");
     }
-  }, [address, isConnected]);
+  }, [address, isConnected, walletProvider]);
 
   const changeInputValue = useCallback((e) => {
     if (e.target.value.length > 9) {
@@ -153,7 +152,7 @@ export default function Faucet() {
     } catch (error) {
       console.error(`error : ${error}`);
     }
-  }, [address, isConnected, inputValue]);
+  }, [address, isConnected, inputValue, walletProvider]);
 
   const unWrap = useCallback(async () => {
     if (!isConnected || !address) {
@@ -183,7 +182,7 @@ export default function Faucet() {
     } catch (error) {
       console.error(`error : ${error}`);
     }
-  }, [address, isConnected, inputValue]);
+  }, [address, isConnected, inputValue, walletProvider]);
 
   return (
     <section

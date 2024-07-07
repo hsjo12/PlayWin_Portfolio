@@ -47,7 +47,7 @@ export default function Stake() {
     } catch (error) {
       console.log(error);
     }
-  }, [address, isConnected, update]);
+  }, [address, isConnected, update, walletProvider]);
 
   const stake = useCallback(async () => {
     if (!isConnected || !address) {
@@ -98,7 +98,7 @@ export default function Stake() {
     } catch (error) {
       console.error(`error : ${error}`);
     }
-  }, [address, isConnected, inputValue]);
+  }, [address, isConnected, inputValue, walletProvider]);
 
   const withdraw = useCallback(async () => {
     if (!isConnected || !address) {
@@ -157,7 +157,7 @@ export default function Stake() {
     } catch (error) {
       console.error(`error : ${error}`);
     }
-  }, [address, isConnected, inputValue]);
+  }, [address, isConnected, inputValue, walletProvider]);
   const changeInputValue = useCallback((e) => {
     if (e.target.value.length > 9) {
       toastMessage(

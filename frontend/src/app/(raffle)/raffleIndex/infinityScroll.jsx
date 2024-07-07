@@ -8,7 +8,7 @@ import {
   timeEndSoonForInActiveRaffles,
 } from "@/utils/fetch/raffleIndex";
 import { getContractForReadOnly } from "@/utils/utils";
-import RaffleJson from "../../../abis/raffle.json";
+import raffleJson from "../../../abis/raffle.json";
 
 export function InfinityScroll() {
   const [safeGuard, setSafeGuard] = useState(false);
@@ -44,8 +44,8 @@ export function InfinityScroll() {
       if (raffleList != null || (raffleList && raffleList.length !== 0)) {
         setSafeGuard(true);
         const raffle = getContractForReadOnly(
-          RaffleJson.address,
-          RaffleJson.abi
+          raffleJson.address,
+          raffleJson.abi
         );
 
         let fetchedRaffleList;
@@ -123,8 +123,8 @@ export function InfinityScroll() {
       if (raffleList != null || (raffleList && raffleList.length !== 0)) {
         setSafeGuard(true);
         const raffle = getContractForReadOnly(
-          RaffleJson.address,
-          RaffleJson.abi
+          raffleJson.address,
+          raffleJson.abi
         );
 
         if (fromIndexForMain.current === Number(await raffle.currentId()) + 1)

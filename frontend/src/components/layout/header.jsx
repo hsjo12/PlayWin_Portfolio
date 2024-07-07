@@ -35,10 +35,11 @@ export default function Header() {
     const sectionPositions = Object.keys(sectionRefs.current).map((section) => {
       return {
         section,
-        offsetTop: sectionRefs.current[section].offsetTop,
+        offsetTop: sectionRefs.current[section].offsetTop || 0,
         offsetBottom:
-          sectionRefs.current[section].offsetTop +
-          sectionRefs.current[section].offsetHeight,
+          sectionRefs.current[section].offsetTop ||
+          0 + sectionRefs.current[section].offsetHeight ||
+          0,
       };
     });
 

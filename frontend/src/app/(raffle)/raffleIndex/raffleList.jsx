@@ -3,7 +3,7 @@ import { getContractForReadOnly } from "@/utils/utils";
 import { useContext, useEffect, useState } from "react";
 import RaffleJson from "../../../abis/raffle.json";
 import Loading from "@/utils/loading";
-import ItemCard from "./itemCard";
+import ItemCard from "../itemCard";
 import { ContextAPI } from "@/app/contextAPI/playWinContextAPI";
 import {
   newestOrder,

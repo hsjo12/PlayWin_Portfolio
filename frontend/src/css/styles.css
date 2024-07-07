@@ -7,28 +7,35 @@
 .hero {
   @apply md:text-3xl sm:text-xl xs:text-lg text-base tracking-[0.2rem] font-bold font-acme;
 }
+.largeText {
+  @apply text-lg md:text-xl tracking-[0.1rem];
+}
 .standardText {
   @apply text-base sm:text-lg tracking-[0.1rem];
 }
 .title {
   @apply md:text-3xl sm:text-xl text-lg tracking-[0.2rem] font-bold font-acme;
 }
+.biggerInfoText {
+  @apply tracking-[0.2rem] xl:text-[2.2rem] md:text-[2rem] text-[2rem];
+}
 .icon {
   @apply md:text-3xl sm:text-2xl text-xl;
 }
 .smallTitle {
-  @apply md:text-2xl sm:text-lg xs:text-lg text-base tracking-[0.2rem] font-bold text-highlight-color;
+  @apply md:text-2xl sm:text-lg xs:text-lg text-base tracking-[0.2rem] font-bold;
 }
 
 /* Input */
 .inputStyle {
   width: 100%;
   color: whitesmoke;
-  border: 3px solid whitesmoke;
+  box-shadow: 5px 5px 10px #000000;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   background-color: #63636363;
   outline: none;
+  @apply font-bebas_neue;
 }
 
 @layer removeIncDecArrow {
@@ -74,6 +81,14 @@
   @apply w-full text-[whitesmoke] rounded-2xl;
 }
 
+.raffleFeatureBox {
+  padding: 0.5rem;
+  width: 100%;
+  background-color: #63636363;
+  box-shadow: 5px 5px 10px #000000;
+  @apply w-full text-[whitesmoke] rounded-2xl;
+}
+
 /* BTN */
 
 .btn {
@@ -97,6 +112,7 @@
 
 .textBtn {
   transition: all 0.2s ease-out;
+  @apply rounded-md tracking-[0.3rem] pl-2 pr-2 font-bebas_neue;
 }
 
 @media (hover: hover) {
@@ -136,4 +152,37 @@
     object-fit: cover;
     @apply max-w-[160] xs:max-w-[250px] sm:max-w-[200px] rounded-2xl;
   }
+}
+
+.bigImageContainer {
+  img {
+    position: relative !important;
+    object-fit: cover;
+    @apply max-w-[200] xs:max-w-[250px] sm:max-w-[300px] md:max-w-[400px] rounded-2xl;
+  }
+}
+
+/* SCROLL */
+.customizedScrollbar::-webkit-scrollbar {
+  display: block;
+  width: 10px;
+}
+.customizedScrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.customizedScrollbar::-webkit-scrollbar-thumb {
+  background: #2250ac93;
+  box-shadow: -1px 1px 3px 0px #3c83f6;
+}
+
+.customizedLotteryScrollbar::-webkit-scrollbar {
+  display: block;
+  width: 10px;
+}
+.customizedLotteryScrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.customizedLotteryScrollbar::-webkit-scrollbar-thumb {
+  background: #9e9e9ebb;
+  box-shadow: -1px 1px 3px 0px whitesmoke;
 }

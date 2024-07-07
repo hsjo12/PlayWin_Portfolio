@@ -1,6 +1,6 @@
 import { ethers } from "ethers";
 require("dotenv").config();
-export const formattedBalance = (balance, decimals) => {
+export const formattedBalance = (balance, decimals = 18) => {
   balance = ethers.formatUnits(balance, decimals);
   const parsedBalance = Number(balance);
   if (parsedBalance === 0) return 0;

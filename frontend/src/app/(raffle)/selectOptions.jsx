@@ -88,7 +88,7 @@ export default function SelectOptions() {
     [select3]
   );
   return (
-    <div className="w-full flex md:justify-start md:flex-row flex-col justify-center items-center selectStyle gap-3">
+    <div className="w-full flex justify-start flex-row  items-center selectStyle gap-3">
       <select value={select1} onChange={selectOption1}>
         {option1.map((option) => (
           <option key={option.name} value={option.value}>
@@ -110,7 +110,6 @@ export default function SelectOptions() {
           </option>
         ))}
       </select>
-      <div className="hidden sm:block sm:col-span-1 md:col-span-3 "></div>
     </div>
   );
 }

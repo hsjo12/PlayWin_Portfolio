@@ -272,18 +272,3 @@ export const timeEndSoonForInActiveRaffles = async (
   }
   return fetchedInActiveRaffleList;
 };
-
-export const fetchCreatorTx = async (raffleId, creator) => {
-  const raffle = getContractForReadOnly(raffleJson.address, raffleJson.abi);
-  raffleId = Number(raffleId);
-  let startingBlockNumber = await raffle.blockNumberByRaffleId(raffleId);
-
-  const filter = await raffle.filters.Create(raffleId, creator, null);
-  const events = await raffle.queryFilter(
-    filter,
-    startingBlockNumber,
-    startingBlockNumber + 10000n
-  );
-
-  return events[0].transactionHash;
-};

@@ -10,14 +10,14 @@ export default function RootLayout({ children, params }) {
     <main className="mx-auto flex flex-col w-full">
       <div className="flex flex-col gap-5  mx-auto w-full ">
         <div className="flex justify-between border-b-2 w-full font-acme">
-          <p className="smallTitle">RAFFLE</p>
+          <p className="smallTitle">My Listing</p>
           {isConnected && (
             <div className="flex items-center justify-between btnText gap-3">
               <button className="textBtn">
-                <Link href={"./myEntries"}>My entries</Link>
+                <Link href={"./raffleIndex"}>Raffle</Link>
               </button>
               <button className="textBtn">
-                <Link href={"./myListing"}>My Listing</Link>
+                <Link href={"./myEntries"}>My Entries</Link>
               </button>
               <button className="textBtn">
                 <Link href={"./raffleCreate"}>Create</Link>
