@@ -22,19 +22,6 @@ export function InfinityScroll() {
     fromIndexForMyEntries,
   } = useContext(ContextAPI);
 
-  useEffect(() => {
-    if (sortType === "End time" || sortType == null) {
-      window.addEventListener("scroll", handleEndTimeScroll);
-      return () => window.removeEventListener("scroll", handleEndTimeScroll);
-    } else if (sortType === "Newest") {
-      window.addEventListener("scroll", handleNewestScroll);
-      return () => window.removeEventListener("scroll", handleNewestScroll);
-    } else {
-      // sortType === "oldest"
-      window.addEventListener("scroll", handleOldestScroll);
-      return () => window.removeEventListener("scroll", handleOldestScroll);
-    }
-  }, [sortType, handleEndTimeScroll, handleNewestScroll, handleOldestScroll]);
   const handleOldestScroll = useCallback(async () => {
     if (
       window.innerHeight + document.documentElement.scrollTop >=
@@ -161,4 +148,18 @@ export function InfinityScroll() {
     safeGuard,
     fromIndexForMyEntries,
   ]);
+
+  useEffect(() => {
+    if (sortType === "End time" || sortType == null) {
+      window.addEventListener("scroll", handleEndTimeScroll);
+      return () => window.removeEventListener("scroll", handleEndTimeScroll);
+    } else if (sortType === "Newest") {
+      window.addEventListener("scroll", handleNewestScroll);
+      return () => window.removeEventListener("scroll", handleNewestScroll);
+    } else {
+      // sortType === "oldest"
+      window.addEventListener("scroll", handleOldestScroll);
+      return () => window.removeEventListener("scroll", handleOldestScroll);
+    }
+  }, [sortType, handleEndTimeScroll, handleNewestScroll, handleOldestScroll]);
 }
