@@ -3,7 +3,7 @@
 import Link from "next/link";
 import SelectOptions from "../selectOptions";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
-export default function RootLayout({ children, params }) {
+export default function RaffleIndexLayout({ children, params }) {
   const { isConnected } = useWeb3ModalAccount();
 
   return (

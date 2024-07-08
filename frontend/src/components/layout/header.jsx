@@ -106,7 +106,7 @@ export default function Header() {
         <Link href="/raffleIndex">
           <p className="textBtn">Raffle</p>
         </Link>
-        <Link href="./">
+        <Link href="/lottery">
           <p className="textBtn">Lottery</p>
         </Link>
 

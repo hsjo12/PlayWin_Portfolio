@@ -3,8 +3,14 @@
 import Link from "next/link";
 import SelectOptions from "../selectOptions";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
-export default function RootLayout({ children, params }) {
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+export default function MyListingLayout({ children, params }) {
+  const router = useRouter();
   const { isConnected } = useWeb3ModalAccount();
+  useEffect(() => {
+    if (!isConnected) return router.push("./raffleIndex");
+  }, []);
 
   return (
     <main className="mx-auto flex flex-col w-full">

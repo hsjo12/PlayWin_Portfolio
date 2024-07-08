@@ -25,7 +25,12 @@
 .smallTitle {
   @apply md:text-2xl sm:text-lg xs:text-lg text-base tracking-[0.2rem] font-bold;
 }
-
+.lottoMainTitle {
+  @apply text-5xl tracking-[1rem] font-bebas_neue;
+}
+.lottoTitle {
+  @apply title font-bebas_neue;
+}
 /* Input */
 .inputStyle {
   width: 100%;
@@ -53,7 +58,6 @@
 .selectStyle > select {
   border: none;
   outline: none;
-
   background-color: #2e2e2e;
   box-shadow: 5px 5px 10px #000000;
   @apply font-bebas_neue md:w-[20%] w-[90%];
@@ -84,9 +88,42 @@
 .raffleFeatureBox {
   padding: 0.5rem;
   width: 100%;
-  background-color: #63636363;
+  background-color: #2250ac93;
   box-shadow: 5px 5px 10px #000000;
   @apply w-full text-[whitesmoke] rounded-2xl;
+}
+
+.raffleHighlightBox {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  width: 100%;
+  color: whitesmoke;
+  background-color: #63636363;
+  box-shadow: 5px 5px 10px #000000;
+}
+
+.lotteryInformationCard {
+  width: 100%;
+  box-shadow: 5px 5px 10px #000000;
+  background-color: #1f1c1ce5;
+  padding: 1rem;
+}
+.smallLotteryCard {
+  width: 100%;
+  box-shadow: 5px 5px 10px #000000;
+  background-color: #5353534b;
+  border: 1px dashed whitesmoke;
+}
+.lotterySmallInformationCardHead {
+  @apply font-[500] font-bebas_neue bg-[#2250ac93] w-full  text-[whitesmoke]  rounded-t-lg text-left p-2 tracking-[0.1rem];
+}
+.lotterySmallInformationCard {
+  width: 100%;
+  padding: 0;
+  background-color: #1f1c1ce5;
+  box-shadow: 5px 5px 10px #000000;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 /* BTN */
@@ -114,7 +151,32 @@
   transition: all 0.2s ease-out;
   @apply rounded-md tracking-[0.3rem] pl-2 pr-2 font-bebas_neue;
 }
-
+.lottoBtn {
+  width: 100%;
+  background-color: #2250ac93;
+  border-radius: 0.375rem;
+  letter-spacing: 0.15rem;
+}
+.lottoBtn:focus {
+  outline: none;
+}
+.lottoNumBtn {
+  box-shadow: 0px 4px 0px 0px #193a7e, 0px -4px 0px 0px #193a7e;
+  color: whitesmoke;
+  @apply transition-colors rounded-md;
+}
+.lottoNumBtn:focus {
+  outline: none;
+}
+.lottoNumBtnSelected {
+  box-shadow: 0px 4px 0px 0px #193a7e, 0px -4px 0px 0px #193a7e;
+  background-color: #193a7e;
+  color: whitesmoke;
+  @apply transition-colors rounded-md;
+}
+.lottoNumBtnSelected:focus {
+  outline: none;
+}
 @media (hover: hover) {
   .btn:hover {
     background-color: rgba(245, 245, 245, 0.74);
@@ -132,6 +194,16 @@
   .textBtn:hover {
     text-shadow: 2px 2px 7px rgba(255, 255, 255, 0.781);
     @apply text-highlight-color;
+  }
+  .lottoBtn:hover {
+    box-shadow: 0px 0px 5px 2px #193a7e;
+    background-color: transparent;
+    color: whitesmoke;
+  }
+  .lottoNumBtn:hover {
+    box-shadow: 0px 4px 0px 0px #193a7e, 0px -4px 0px 0px #193a7e;
+    background-color: #2250ac93;
+    color: whitesmoke;
   }
 }
 
@@ -153,7 +225,6 @@
     @apply max-w-[160] xs:max-w-[250px] sm:max-w-[200px] rounded-2xl;
   }
 }
-
 .bigImageContainer {
   img {
     position: relative !important;
@@ -185,4 +256,16 @@
 .customizedLotteryScrollbar::-webkit-scrollbar-thumb {
   background: #9e9e9ebb;
   box-shadow: -1px 1px 3px 0px whitesmoke;
+}
+
+/* LAYER */
+@layer removeIncDecArrow {
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }

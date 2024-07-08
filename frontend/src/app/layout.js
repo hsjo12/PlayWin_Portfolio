@@ -2,6 +2,7 @@ import Layout from "@/components/layout/layout";
 import "../css/globals.css";
 import "../css/styles.css";
 import "../css/animation.css";
+import "../css/toastfy.css";
 
 import "react-toastify/ReactToastify.min.css";
 import dynamic from "next/dynamic";

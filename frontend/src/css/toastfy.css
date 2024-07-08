@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Toastify__toast-container {
+  @apply w-full;
+}
+.toastMessage {
+  background-color: #191b1d;
+  border: 1px solid #63636363;
+  border-radius: 0.375rem;
+  box-shadow: 5px 5px 10px #000000;
+  min-height: 50px;
+  white-space: nowrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @apply w-max xl:text-[1.3rem] text-[1.1rem] min-w-[300px];
+}
+.Toastify__close-button--light {
+  @apply !opacity-100 text-[whitesmoke];
+}
+
+.Toastify__toast-body {
+  word-wrap: break-word;
+  @apply font-bebas_neue text-[whitesmoke];
+}
