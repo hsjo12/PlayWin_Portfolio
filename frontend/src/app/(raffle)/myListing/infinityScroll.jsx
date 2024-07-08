@@ -34,17 +34,7 @@ export function InfinityScroll() {
       window.addEventListener("scroll", handleOldestScroll);
       return () => window.removeEventListener("scroll", handleOldestScroll);
     }
-  }, [
-    myListingList,
-    address,
-    isConnected,
-    offset,
-    sortType,
-    itemType,
-    activeType,
-    safeGuard,
-    fromIndexForMyListing,
-  ]);
+  }, [sortType, handleEndTimeScroll, handleNewestScroll, handleOldestScroll]);
 
   const handleOldestScroll = useCallback(async () => {
     if (
@@ -77,7 +67,8 @@ export function InfinityScroll() {
     myListingList,
     address,
     isConnected,
-    sortType,
+    offset,
+    setMyListingList,
     itemType,
     activeType,
     safeGuard,
@@ -121,7 +112,8 @@ export function InfinityScroll() {
     myListingList,
     address,
     isConnected,
-    sortType,
+    offset,
+    setMyListingList,
     itemType,
     activeType,
     safeGuard,
@@ -160,7 +152,8 @@ export function InfinityScroll() {
     myListingList,
     address,
     isConnected,
-    sortType,
+    offset,
+    setMyListingList,
     itemType,
     activeType,
     safeGuard,

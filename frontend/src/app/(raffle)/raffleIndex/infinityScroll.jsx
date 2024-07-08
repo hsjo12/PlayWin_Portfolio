@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { ContextAPI } from "@/app/contextAPI/playWinContextAPI";
 import {
   newestOrder,
@@ -34,8 +34,9 @@ export function InfinityScroll() {
       window.addEventListener("scroll", handleOldestScroll);
       return () => window.removeEventListener("scroll", handleOldestScroll);
     }
-  }, [raffleList, sortType, itemType, activeType, safeGuard]);
-  const handleEndTimeScroll = async () => {
+  }, [sortType, handleEndTimeScroll, handleNewestScroll, handleOldestScroll]);
+
+  const handleEndTimeScroll = useCallback(async () => {
     if (
       window.innerHeight + document.documentElement.scrollTop >=
       document.documentElement.offsetHeight - 10
@@ -85,9 +86,17 @@ export function InfinityScroll() {
         setSafeGuard(false);
       }
     }
-  };
+  }, [
+    raffleList,
+    offset,
+    setRaffleList,
+    itemType,
+    activeType,
+    safeGuard,
+    fromIndexForMain,
+  ]);
 
-  const handleNewestScroll = async () => {
+  const handleNewestScroll = useCallback(async () => {
     if (
       window.innerHeight + document.documentElement.scrollTop >=
       document.documentElement.offsetHeight - 10
@@ -112,9 +121,17 @@ export function InfinityScroll() {
         setSafeGuard(false);
       }
     }
-  };
+  }, [
+    raffleList,
+    offset,
+    setRaffleList,
+    itemType,
+    activeType,
+    safeGuard,
+    fromIndexForMain,
+  ]);
 
-  const handleOldestScroll = async () => {
+  const handleOldestScroll = useCallback(async () => {
     if (
       window.innerHeight + document.documentElement.scrollTop >=
       document.documentElement.offsetHeight - 10
@@ -145,5 +162,13 @@ export function InfinityScroll() {
         setSafeGuard(false);
       }
     }
-  };
+  }, [
+    raffleList,
+    offset,
+    setRaffleList,
+    itemType,
+    activeType,
+    safeGuard,
+    fromIndexForMain,
+  ]);
 }
