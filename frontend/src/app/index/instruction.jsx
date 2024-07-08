@@ -66,7 +66,12 @@ export default function Instruction() {
                 preRenderFirstString={false}
               />
             )}
-            <button className="btn w-[85%] md:hidden mx-auto">Faucet</button>
+            <button
+              className="btn w-[85%] md:hidden mx-auto"
+              onClick={() => scrollToSection("faucet")}
+            >
+              Faucet
+            </button>
           </div>
 
           <div className="w-full flex flex-col justify-center items-start gap-3 flex-grow">
@@ -90,23 +95,24 @@ export default function Instruction() {
               />
             )}
 
-            <button className="btn w-[85%] md:hidden mx-auto">Stake</button>
+            <button
+              className={`btn w-[85%] md:hidden mx-auto`}
+              onClick={() => scrollToSection("stake")}
+            >
+              Stake
+            </button>
           </div>
         </div>
 
         <div className="w-full hidden md:grid grid-cols-2 justify-center items-start gap-3 flex-grow">
           <button
-            className={`btn w-[40%] mx-auto  ${
-              currentPosition === "faucet" ? "text-highlight-color" : ""
-            }`}
+            className={`btn w-[40%] mx-auto `}
             onClick={() => scrollToSection("faucet")}
           >
             Faucet
           </button>
           <button
-            className={`btn w-[40%] mx-auto  ${
-              currentPosition === "stake" ? "text-highlight-color" : ""
-            }`}
+            className={`btn w-[40%] mx-auto `}
             onClick={() => scrollToSection("stake")}
           >
             Stake
@@ -137,8 +143,14 @@ export default function Instruction() {
                 preRenderFirstString={false}
               />
             )}
-
-            <button className="btn w-[85%] md:hidden mx-auto">Raffle</button>
+            <Link href="/raffleIndex" className="w-full text-center ">
+              <button
+                onClick={() => setCurrentPosition("raffle")}
+                className={`btn w-[85%] md:hidden mx-auto`}
+              >
+                Raffle
+              </button>
+            </Link>
           </div>
 
           <div className="w-full flex flex-col justify-center items-start gap-3 flex-grow">
@@ -167,9 +179,7 @@ export default function Instruction() {
             <Link href="/lottery" className="w-full text-center toTop">
               <button
                 onClick={() => setCurrentPosition("lottery")}
-                className={`btn w-[85%] md:hidden mx-auto   ${
-                  currentPosition === "lottery" ? "text-highlight-color" : ""
-                }`}
+                className={`btn w-[85%] md:hidden mx-auto`}
               >
                 Lottery
               </button>
@@ -180,9 +190,7 @@ export default function Instruction() {
           <Link href="/raffleIndex" className="w-full text-center ">
             <button
               onClick={() => setCurrentPosition("raffle")}
-              className={`btn w-[40%] mx-auto  ${
-                currentPosition === "raffle" ? "text-highlight-color" : ""
-              }`}
+              className={`btn w-[40%] mx-auto`}
             >
               Raffle
             </button>
@@ -191,9 +199,7 @@ export default function Instruction() {
           <Link href="/lottery" className="w-full text-center ">
             <button
               onClick={() => setCurrentPosition("lottery")}
-              className={`btn w-[40%] mx-auto  ${
-                currentPosition === "lottery" ? "text-highlight-color" : ""
-              }`}
+              className={`btn w-[40%] mx-auto`}
             >
               Lottery
             </button>
