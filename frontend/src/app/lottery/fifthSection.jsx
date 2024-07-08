@@ -19,7 +19,7 @@ export default function FifthSection() {
                 Winning Process
               </p>
               <p>
-                We use Chainlink's VRF to randomly generate the winning number.
+                We use Chainlink VRF to randomly generate the winning number.
                 Then, in about 10 minutes, we determine the lucky winners! Match
                 5, 4, or 3 numbers to the winning combination to win big!
               </p>
