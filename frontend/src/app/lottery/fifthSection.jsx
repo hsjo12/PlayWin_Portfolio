@@ -19,9 +19,10 @@ export default function FifthSection() {
                 Winning Process
               </p>
               <p>
-                We use Chainlink VRF to randomly generate the winning number.
-                Then, in about 10 minutes, we determine the lucky winners! Match
-                5, 4, or 3 numbers to the winning combination to win big!
+                We use Chainlink&rsquo;s VRF to randomly generate the winning
+                number. Then, in about 10 minutes, we determine the lucky
+                winners! Match 5, 4, or 3 numbers to the winning combination to
+                win big!
               </p>
               <div className="flex flex-col gap-2">
                 <p>For example, if the winning number is 12345:</p>
@@ -37,7 +38,7 @@ export default function FifthSection() {
               <p>
                 70% of total sales contribute to the lottery pool. The remaining
                 20% and 10% are set aside for rewarding stakers and supporting
-                our platform's operations.
+                our platform&rsquo;s operations.
               </p>
             </div>
             <div className="flex flex-col gap-3">
