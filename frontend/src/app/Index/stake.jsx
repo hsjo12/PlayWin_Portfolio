@@ -197,67 +197,138 @@ export default function Stake() {
     }
   }, []);
 
-  return (
-    <section
-      ref={(el) => (sectionRefs.current.stake = el)}
-      className={`w-full flex flex-col justify-center items-center gap-3 ${
-        animationOnBySection.stake ? "" : "invisible"
-      }`}
-    >
-      <p className="title">Stake</p>
+  if (!animationOnBySection.stake) {
+    return (
+      <section
+        ref={(el) => (sectionRefs.current.stake = el)}
+        className={`w-full flex flex-col justify-center items-center gap-3 ${
+          animationOnBySection.stake ? "" : "invisible"
+        }`}
+      >
+        <p className="title">Stake</p>
 
-      <div className="box flex flex-col justify-center items-start gap-3">
-        <p className="smallTitle">INFO</p>
-        <p>• Only USDT is acceptable to be staked.</p>
-        <p>• FUSDT, in the same amount as the staked USDT, will be minted.</p>
-        <p>• The minimum lock period is 3 days.</p>
-        <p>• The rewards will be in FUSDT.</p>
-      </div>
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3">
         <div className="box flex flex-col justify-center items-start gap-3">
-          <p className="smallTitle">STAKING INFO</p>
-          {isConnected && (
-            <p>User : {`${address.slice(0, 6)}...${address.slice(-4)}`}</p>
-          )}
-          <p>{`Staking balance: ${isConnected ? stakingBalance : "0"} USDT`}</p>
-          <p>{`Current Reward: ${isConnected ? userReward : "0"} FUSDT`}</p>
-          <p>{`Lockup rounds: ${
-            isConnected ? leftoverLockUpRounds : "0"
-          } Round`}</p>
+          <p className="smallTitle">INFO</p>
+          <p>• Only USDT is acceptable to be staked.</p>
+          <p>• FUSDT, in the same amount as the staked USDT, will be minted.</p>
+          <p>• The minimum lock period is 3 days.</p>
+          <p>• The rewards will be in FUSDT.</p>
         </div>
-        <div className="box flex flex-col justify-between items-start gap-3 h-full">
-          <p className="smallTitle">STAKING</p>
-
-          <div className="flex flex-col gap-3 w-full">
-            <label htmlFor="stakingInput" className="infoText">
-              Staking Amount
-            </label>
-
-            <input
-              id="stakingInput"
-              className="removeIncDecArrow inputStyle infoText"
-              type="number"
-              step="0.0001"
-              min="0.0001"
-              onChange={changeInputValue}
-              value={inputValue}
-              placeholder="The staking amount in FUSDT"
-            />
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3">
+          <div className="box flex flex-col justify-center items-start gap-3">
+            <p className="smallTitle">STAKING INFO</p>
+            {isConnected && (
+              <p>User : {`${address.slice(0, 6)}...${address.slice(-4)}`}</p>
+            )}
+            <p>{`Staking balance: ${
+              isConnected ? stakingBalance : "0"
+            } USDT`}</p>
+            <p>{`Current Reward: ${isConnected ? userReward : "0"} FUSDT`}</p>
+            <p>{`Lockup rounds: ${
+              isConnected ? leftoverLockUpRounds : "0"
+            } Round`}</p>
           </div>
+          <div className="box flex flex-col justify-between items-start gap-3 h-full">
+            <p className="smallTitle">STAKING</p>
 
-          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
-            <button onClick={stake} className="btn">
-              Stake
-            </button>
-            <button onClick={withdraw} className="btn">
-              Withdraw all
-            </button>
-            <button onClick={claim} className="btn">
-              Claim
-            </button>
+            <div className="flex flex-col gap-3 w-full">
+              <label htmlFor="stakingInput" className="infoText">
+                Staking Amount
+              </label>
+
+              <input
+                id="stakingInput"
+                className="removeIncDecArrow inputStyle infoText"
+                type="number"
+                step="0.0001"
+                min="0.0001"
+                onChange={changeInputValue}
+                value={inputValue}
+                placeholder="The staking amount in FUSDT"
+              />
+            </div>
+
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
+              <button onClick={stake} className="btn">
+                Stake
+              </button>
+              <button onClick={withdraw} className="btn">
+                Withdraw all
+              </button>
+              <button onClick={claim} className="btn">
+                Claim
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  } else {
+    // ANIMATION
+    return (
+      <section
+        ref={(el) => (sectionRefs.current.stake = el)}
+        className={`w-full flex flex-col justify-center items-center gap-3 ${
+          animationOnBySection.stake ? "" : "invisible"
+        }`}
+      >
+        <p className="title">Stake</p>
+
+        <div className="box flex flex-col justify-center items-start gap-3 toBottom">
+          <p className="smallTitle">INFO</p>
+          <p>• Only USDT is acceptable to be staked.</p>
+          <p>• FUSDT, in the same amount as the staked USDT, will be minted.</p>
+          <p>• The minimum lock period is 3 days.</p>
+          <p>• The rewards will be in FUSDT.</p>
+        </div>
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3">
+          <div className="box flex flex-col justify-center items-start gap-3 toLeft">
+            <p className="smallTitle">STAKING INFO</p>
+            {isConnected && (
+              <p>User : {`${address.slice(0, 6)}...${address.slice(-4)}`}</p>
+            )}
+            <p>{`Staking balance: ${
+              isConnected ? stakingBalance : "0"
+            } USDT`}</p>
+            <p>{`Current Reward: ${isConnected ? userReward : "0"} FUSDT`}</p>
+            <p>{`Lockup rounds: ${
+              isConnected ? leftoverLockUpRounds : "0"
+            } Round`}</p>
+          </div>
+          <div className="box flex flex-col justify-between items-start gap-3 h-full toRight">
+            <p className="smallTitle">STAKING</p>
+
+            <div className="flex flex-col gap-3 w-full">
+              <label htmlFor="stakingInput" className="infoText">
+                Staking Amount
+              </label>
+
+              <input
+                id="stakingInput"
+                className="removeIncDecArrow inputStyle infoText"
+                type="number"
+                step="0.0001"
+                min="0.0001"
+                onChange={changeInputValue}
+                value={inputValue}
+                placeholder="The staking amount in FUSDT"
+              />
+            </div>
+
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-3">
+              <button onClick={stake} className="btn">
+                Stake
+              </button>
+              <button onClick={withdraw} className="btn">
+                Withdraw all
+              </button>
+              <button onClick={claim} className="btn">
+                Claim
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 }

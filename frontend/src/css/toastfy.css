@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .Toastify__toast-container {
-  @apply w-full;
+  @apply w-full mx-auto;
 }
 .toastMessage {
   background-color: #191b1d;

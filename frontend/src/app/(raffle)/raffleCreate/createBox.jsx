@@ -36,19 +36,7 @@ export default function CreateBox() {
   });
   const { address, isConnected } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
-  const ref = useRef({
-    prizeType: null,
-    prizeTypeText: "None",
-    prizeAddress: "",
-    prizeAmount: "",
-    prizeId: "",
-    entryPrice: "",
-    raffleMinEntries: "",
-    raffleMaxEntries: "",
-    minUserEntries: "",
-    maxUserEntries: "",
-    deadline: "",
-  });
+  const ref = useRef({ prizeType: null, prizeTypeText: "None" });
 
   const onChangePrizeAddress = useCallback(
     async (e) => {
@@ -354,7 +342,7 @@ export default function CreateBox() {
         minUserEntries: "",
         maxUserEntries: "",
         deadline: "",
-      });
+      })
       ref.current = {
         prizeType: null,
         prizeTypeText: "None",
@@ -367,7 +355,7 @@ export default function CreateBox() {
         minUserEntries: "",
         maxUserEntries: "",
         deadline: "",
-      };
+      }
       setUpdate(Date.now());
     },
     [inputValue, address, isConnected]

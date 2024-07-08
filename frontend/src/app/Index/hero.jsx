@@ -14,9 +14,12 @@ export default function Hero() {
   return (
     <div className="w-full flex flex-col justify-center items-center gap-6 h-[90vh]">
       <div className="w-full h-screen absolute top-0 left-0 heroBackground" />
-      <p className="hero">Welcome To PlayWin</p>
-      <p>Dive into thrilling raffle and lottery</p>
-      <button onClick={() => scrollToSection("about")} className="btn">
+      <p className="hero toBottom z-10">Welcome To PlayWin</p>
+      <p className="showingUp z-10">Dive into thrilling raffle and lottery</p>
+      <button
+        onClick={() => scrollToSection("about")}
+        className="btn showingUp z-10"
+      >
         Explore
       </button>
     </div>

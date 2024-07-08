@@ -184,77 +184,158 @@ export default function Faucet() {
     }
   }, [address, isConnected, inputValue, walletProvider]);
 
-  return (
-    <section
-      ref={(el) => (sectionRefs.current.faucet = el)}
-      className={`w-full flex flex-col justify-center items-center gap-3 ${
-        animationOnBySection.faucet ? "" : "invisible"
-      }`}
-    >
-      <p className="title">Faucet</p>
+  if (!animationOnBySection.faucet) {
+    return (
+      <section
+        ref={(el) => (sectionRefs.current.faucet = el)}
+        className={`w-full flex flex-col justify-center items-center gap-3 ${
+          animationOnBySection.faucet ? "" : "invisible"
+        }`}
+      >
+        <p className="title">Faucet</p>
 
-      <div className="box flex flex-col justify-center items-start gap-3">
-        <p className="smallTitle">INFO</p>
-        <p>• FUSDT is the currency for lottery and raffle.</p>
-        <p>• To acquire fUSDT, wrapping USDT is a prerequisite.</p>
-        <p>• FUSDT can be unwrapped into USDT at any time.</p>
-        <p>• FUSDT is pegged at a 1:1 ratio to USDT.</p>
-        <p>• To claim USDT for free, use the USDT faucet offered by AAVE.</p>
-      </div>
-
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3">
         <div className="box flex flex-col justify-center items-start gap-3">
-          <p className="smallTitle">USER INFO</p>
-          {isConnected && (
-            <p>User : {`${address.slice(0, 6)}...${address.slice(-4)}`}</p>
-          )}
-          <p>{`User ETH balance : ${isConnected ? ethBalance : "0"} ETH`}</p>
-          <p>{`User USDT balance : ${isConnected ? usdtBalance : "0"} USDT`}</p>
-          <p>{`User FUSDT balance : ${
-            isConnected ? fusdtBalance : "0"
-          } FUSDT`}</p>
-          <div className="w-full flex flex-col md:flex-row justify-around items-center gap-3">
-            <button className="btn w-full md:w-[40%]">
-              <Link
-                href="https://www.alchemy.com/faucets/ethereum-sepolia"
-                target="blank"
-              >
-                Get ETH
-              </Link>
-            </button>
+          <p className="smallTitle">INFO</p>
+          <p>• FUSDT is the currency for lottery and raffle.</p>
+          <p>• To acquire fUSDT, wrapping USDT is a prerequisite.</p>
+          <p>• FUSDT can be unwrapped into USDT at any time.</p>
+          <p>• FUSDT is pegged at a 1:1 ratio to USDT.</p>
+          <p>• To claim USDT for free, use the USDT faucet offered by AAVE.</p>
+        </div>
 
-            <button onClick={faucet} className="btn w-full md:w-[40%]">
-              Get USDT
-            </button>
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3">
+          <div className="box flex flex-col justify-center items-start gap-3">
+            <p className="smallTitle">USER INFO</p>
+            {isConnected && (
+              <p>User : {`${address.slice(0, 6)}...${address.slice(-4)}`}</p>
+            )}
+            <p>{`User ETH balance : ${isConnected ? ethBalance : "0"} ETH`}</p>
+            <p>{`User USDT balance : ${
+              isConnected ? usdtBalance : "0"
+            } USDT`}</p>
+            <p>{`User FUSDT balance : ${
+              isConnected ? fusdtBalance : "0"
+            } FUSDT`}</p>
+            <div className="w-full flex flex-col md:flex-row justify-around items-center gap-3">
+              <button className="btn w-full md:w-[40%]">
+                <Link
+                  href="https://www.alchemy.com/faucets/ethereum-sepolia"
+                  target="blank"
+                >
+                  Get ETH
+                </Link>
+              </button>
+
+              <button onClick={faucet} className="btn w-full md:w-[40%]">
+                Get USDT
+              </button>
+            </div>
+          </div>
+          <div className="box flex flex-col justify-between items-start gap-3 h-full">
+            <p className="smallTitle">WRAP / UNWRAP</p>
+
+            <div className="flex flex-col gap-3 w-full">
+              <label htmlFor="stakingInput">Amount</label>
+              <input
+                id="stakingInput"
+                className="removeIncDecArrow inputStyle"
+                type="number"
+                step="0.0001"
+                min="0.0001"
+                onChange={changeInputValue}
+                value={inputValue}
+                placeholder="USDT/fUSDT"
+              />
+            </div>
+
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3">
+              <button onClick={wrap} className="btn">
+                Wrap
+              </button>
+              <button onClick={unWrap} className="btn">
+                UnWrap
+              </button>
+            </div>
           </div>
         </div>
-        <div className="box flex flex-col justify-between items-start gap-3 h-full">
-          <p className="smallTitle">WRAP / UNWRAP</p>
+      </section>
+    );
+  } else {
+    // ANIMATION
+    return (
+      <section
+        ref={(el) => (sectionRefs.current.faucet = el)}
+        className={`w-full flex flex-col justify-center items-center gap-3 ${
+          animationOnBySection.faucet ? "" : "invisible"
+        }`}
+      >
+        <p className="title">Faucet</p>
 
-          <div className="flex flex-col gap-3 w-full">
-            <label htmlFor="stakingInput">Amount</label>
-            <input
-              id="stakingInput"
-              className="removeIncDecArrow inputStyle"
-              type="number"
-              step="0.0001"
-              min="0.0001"
-              onChange={changeInputValue}
-              value={inputValue}
-              placeholder="USDT/fUSDT"
-            />
+        <div className="box flex flex-col justify-center items-start gap-3 toBottom">
+          <p className="smallTitle">INFO</p>
+          <p>• FUSDT is the currency for lottery and raffle.</p>
+          <p>• To acquire fUSDT, wrapping USDT is a prerequisite.</p>
+          <p>• FUSDT can be unwrapped into USDT at any time.</p>
+          <p>• FUSDT is pegged at a 1:1 ratio to USDT.</p>
+          <p>• To claim USDT for free, use the USDT faucet offered by AAVE.</p>
+        </div>
+
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3">
+          <div className="box flex flex-col justify-center items-start gap-3 toLeft">
+            <p className="smallTitle">USER INFO</p>
+            {isConnected && (
+              <p>User : {`${address.slice(0, 6)}...${address.slice(-4)}`}</p>
+            )}
+            <p>{`User ETH balance : ${isConnected ? ethBalance : "0"} ETH`}</p>
+            <p>{`User USDT balance : ${
+              isConnected ? usdtBalance : "0"
+            } USDT`}</p>
+            <p>{`User FUSDT balance : ${
+              isConnected ? fusdtBalance : "0"
+            } FUSDT`}</p>
+            <div className="w-full flex flex-col md:flex-row justify-around items-center gap-3">
+              <button className="btn w-full md:w-[40%]">
+                <Link
+                  href="https://www.alchemy.com/faucets/ethereum-sepolia"
+                  target="blank"
+                >
+                  Get ETH
+                </Link>
+              </button>
+
+              <button onClick={faucet} className="btn w-full md:w-[40%]">
+                Get USDT
+              </button>
+            </div>
           </div>
+          <div className="box flex flex-col justify-between items-start gap-3 h-full toRight">
+            <p className="smallTitle">WRAP / UNWRAP</p>
 
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3">
-            <button onClick={wrap} className="btn">
-              Wrap
-            </button>
-            <button onClick={unWrap} className="btn">
-              UnWrap
-            </button>
+            <div className="flex flex-col gap-3 w-full">
+              <label htmlFor="stakingInput">Amount</label>
+              <input
+                id="stakingInput"
+                className="removeIncDecArrow inputStyle"
+                type="number"
+                step="0.0001"
+                min="0.0001"
+                onChange={changeInputValue}
+                value={inputValue}
+                placeholder="USDT/fUSDT"
+              />
+            </div>
+
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-3">
+              <button onClick={wrap} className="btn">
+                Wrap
+              </button>
+              <button onClick={unWrap} className="btn">
+                UnWrap
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
+      </section>
+    );
+  }
 }

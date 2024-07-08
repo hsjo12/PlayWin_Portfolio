@@ -57,6 +57,85 @@
   }
 }
 
+.toBottom {
+  animation: fromTopToBottom 0.8s ease-out;
+}
+.toTop {
+  animation: fromBottomToTop 0.8s ease-out;
+}
+.toRight {
+  animation: fromLeftToRight 0.8s ease-out;
+}
+.toLeft {
+  animation: fromRightToLeft 0.8s ease-out;
+}
+.showingUp {
+  animation: appear 1.5s ease-out;
+}
+.jumping {
+  animation: jump 1s infinite ease-out;
+  transform-origin: bottom;
+}
+
+@keyframes fromTopToBottom {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fromBottomToTop {
+  0% {
+    transform: translateY(100px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fromLeftToRight {
+  0% {
+    transform: translateX(-100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fromRightToLeft {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+}
+
 .loader {
   @apply w-10 h-10 ease-linear border-4 border-gray-200 rounded-full;
   border-top-color: #3c83f6;

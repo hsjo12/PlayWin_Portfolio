@@ -23,9 +23,8 @@ export default function PrizeList() {
   const [openedPrizeInfo, setOpenPrizeInfo] = useState(null);
 
   useEffect(() => {
-    if (!isConnected || !address) {
-      return toastMessage("Please Connect Wallet", "warn");
-    }
+    if (!isConnected || !address) return;
+
     (async () => {
       setLoading(true);
       setPrizeList(await fetchPrizeList(address));

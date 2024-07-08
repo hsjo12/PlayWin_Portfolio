@@ -33,12 +33,12 @@ export default function ItemCard({ info }) {
 
   if (isLoading)
     return (
-      <div className="flex flex-col justify-center items-center w-full border-2">
+      <div className="flex flex-col justify-center items-center w-full">
         <Loading />
       </div>
     );
   return (
-    <div className="raffleCard flex flex-col justify-center w-full gap-2 ">
+    <div className="raffleCard flex flex-col justify-center w-full gap-2">
       {metadata.image == null ? (
         <div className="min-h-[125px] md:min-h-[250px] xl:min-h-[300px] flex flex-col justify-center items-center">
           <Loading />
@@ -63,7 +63,7 @@ export default function ItemCard({ info }) {
       )}
       <p>{`${formattedBalance(entryPrice, 6)} FUSDT`}</p>
       <DateTimeCounter
-        className="border-2 text-center w-full"
+        className="text-center w-full"
         startDate={Number(deadline * 1000n)}
       />
       <Link href={`/raffleDetail/${raffleId}`}>

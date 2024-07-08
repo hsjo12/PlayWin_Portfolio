@@ -25,8 +25,8 @@ export default function ThirdSection() {
     return (
       <section className="w-full flex flex-col justify-center items-center lotterySmallInformationCard">
         <div className="lotterySmallInformationCardHead">Purchase</div>
-        <div className="w-full grid grid-cols-2 p-5 gap-5">
-          <div className="w-full flex flex-col justify-start items-center gap-5">
+        <div className="w-full grid grid-cols-2 p-5 gap-5 justify-start">
+          <div className="w-full flex flex-col justify-around items-center gap-5">
             <p className="">Selected Numbers</p>
             <SelectedNumbersBox />
             <RemoveAllBtn />

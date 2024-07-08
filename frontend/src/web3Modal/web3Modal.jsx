@@ -47,6 +47,10 @@ createWeb3Modal({
     "4622a2b2d6af1c9844944291e5e7351a6aa24cd7b23099efac1b2fd875da31a0",
   ],
   allWallets: "HIDE",
+  themeMode: "dark",
+  themeVariables: {
+    "--w3m-z-index": 999,
+  },
 });
 
 export default function Web3Modal({ children }) {

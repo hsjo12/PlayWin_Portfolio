@@ -5,7 +5,6 @@ export function toastMessage(message, type, time = 5000) {
   const options = {
     position: "top-center",
     autoClose: time,
-    theme: "dark",
     className:
       "toastMessage Toastify__toast-container Toastify__close-button--light Toastify__toast-body",
     onClose: () => {

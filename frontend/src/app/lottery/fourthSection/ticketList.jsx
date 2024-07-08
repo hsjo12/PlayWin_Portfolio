@@ -13,9 +13,7 @@ export default function TicketList() {
   const [ticketList, setTicketList] = useState([]);
 
   useEffect(() => {
-    if (!isConnected || !address) {
-      return toastMessage("Please Connect Wallet", "warn");
-    }
+    if (!isConnected || !address) return;
 
     (async () => {
       setLoading(true);
