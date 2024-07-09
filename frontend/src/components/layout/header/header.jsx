@@ -115,7 +115,7 @@ export default function Header() {
         />
       )}
       <nav className="w-[95%] mx-auto flex justify-between items-center gap-3 font-bebas_neue">
-        <Link href="./">
+        <Link href="./" onClick={() => setCurrentPosition(null)}>
           <p className="logo textBtn">PLAYWIN</p>
         </Link>
 
