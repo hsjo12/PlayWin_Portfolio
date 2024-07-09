@@ -63,7 +63,7 @@ export default function ItemCard({ info }) {
       )}
       <p>{`${formattedBalance(entryPrice, 6)} FUSDT`}</p>
       <DateTimeCounter
-        className="text-center w-full"
+        className="text-center w-full tracking-[0.03rem]"
         startDate={Number(deadline * 1000n)}
       />
       <Link href={`/raffleDetail/${raffleId}`}>

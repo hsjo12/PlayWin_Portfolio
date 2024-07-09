@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { ContextAPI } from "../contextAPI/playWinContextAPI";
 import { TypeAnimation } from "react-type-animation";
 import Link from "next/link";
@@ -10,7 +10,7 @@ export default function Instruction() {
     setCurrentPosition,
     currentPosition,
   } = useContext(ContextAPI);
-  const scrollToSection = useContext((section) => {
+  const scrollToSection = useCallback((section) => {
     if (sectionRefs.current[section]) {
       sectionRefs.current[section].scrollIntoView({
         behavior: "smooth",

@@ -56,7 +56,7 @@ const DateTimeCounter = ({ startDate, className }) => {
       return "Time Ended";
     }
 
-    return `${dates}d: ${hours}h: ${minutes}m: ${seconds}s`;
+    return `${dates}d:${hours}h:${minutes}m:${seconds}s`;
   };
 
   return (

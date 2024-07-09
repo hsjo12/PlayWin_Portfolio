@@ -1,4 +1,4 @@
-import Layout from "@/components/layout/layout";
+// import Layout from "@/components/layout/layout";
 import "../css/globals.css";
 import "../css/styles.css";
 import "../css/animation.css";
@@ -33,6 +33,9 @@ const ParticlesComponent = dynamic(
     ssr: false,
   }
 );
+const Layout = dynamic(() => import("@/components/layout/layout"), {
+  ssr: false,
+});
 const bebas_neue = Bebas_Neue({
   subsets: ["latin"],
   weight: ["400"],

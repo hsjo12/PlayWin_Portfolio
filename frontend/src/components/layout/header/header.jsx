@@ -6,8 +6,11 @@ import { useMediaQuery } from "react-responsive";
 import { useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { ContextAPI } from "@/app/contextAPI/playWinContextAPI";
 import Menu from "./menu";
-
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 export default function Header() {
+  const router = useRouter();
+  const pathname = usePathname();
   const { open } = useWeb3Modal();
   const {
     sectionRefs,
@@ -16,6 +19,7 @@ export default function Header() {
     currentPosition,
     setCurrentPosition,
   } = useContext(ContextAPI);
+
   const { address, isConnected } = useWeb3ModalAccount();
   const [navBg, setNavBg] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -26,14 +30,30 @@ export default function Header() {
   useEffect(() => {
     setIsClient(true);
   }, []);
-  const scrollToSection = useCallback((section) => {
-    if (sectionRefs.current[section]) {
-      sectionRefs.current[section].scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
-  }, []);
+
+  const scrollToSection = useCallback(
+    (section) => {
+      if (pathname !== "/") {
+        router.push("/");
+        setTimeout(() => {
+          if (sectionRefs.current[section]) {
+            sectionRefs.current[section].scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }
+        }, 300);
+      } else {
+        if (sectionRefs.current[section]) {
+          sectionRefs.current[section].scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }
+      }
+    },
+    [router, pathname, sectionRefs, isClient]
+  );
 
   const handleScrollForAnimation = useCallback(() => {
     const sectionPositions = Object.keys(sectionRefs.current).map((section) => {
@@ -71,17 +91,15 @@ export default function Header() {
   }, [setNavBg]);
 
   useEffect(() => {
-    if (currentPosition !== "raffle" || currentPosition !== "lottery") {
+    if (pathname === "/") {
       window.addEventListener("scroll", handleScrollForAnimation);
     }
     window.addEventListener("scroll", handleScrollForNav);
     return () => {
-      if (currentPosition !== "raffle" || currentPosition !== "lottery") {
-        window.removeEventListener("scroll", handleScrollForAnimation);
-      }
+      window.removeEventListener("scroll", handleScrollForAnimation);
       window.removeEventListener("scroll", handleScrollForNav);
     };
-  }, [handleScrollForAnimation]);
+  }, [handleScrollForAnimation, pathname]);
   if (!isClient) return null;
   return (
     <div
