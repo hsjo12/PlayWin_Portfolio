@@ -70,7 +70,7 @@ export const fetchCreatorTx = async (raffleId, creator) => {
   const events = await raffle.queryFilter(
     filter,
     startingBlockNumber,
-    startingBlockNumber + 10000n
+    startingBlockNumber + 1000000n
   );
 
   return events[0].transactionHash;

@@ -29,11 +29,11 @@ export const oldestOrder = async (
     const events = await raffle.queryFilter(
       filter,
       startingBlockNumber,
-      startingBlockNumber + 10000n
+      startingBlockNumber + 100000n
     );
 
     fetchedEventList = [...fetchedEventList, ...events];
-    startingBlockNumber = startingBlockNumber + 10000n;
+    startingBlockNumber = startingBlockNumber + 100000n;
 
     if (
       fetchedEventList.length >= offset ||
@@ -104,12 +104,12 @@ export const newestOrder = async (
     while (true) {
       const events = await raffle.queryFilter(
         filter,
-        startingBlockNumber - 10000n,
+        startingBlockNumber - 100000n,
         startingBlockNumber
       );
 
       fetchedEventList = [...fetchedEventList, ...events];
-      startingBlockNumber = startingBlockNumber - 10000n;
+      startingBlockNumber = startingBlockNumber - 100000n;
       if (
         fetchedEventList.length >= offset ||
         fromIndexForMain.current - offset < 1 ||
