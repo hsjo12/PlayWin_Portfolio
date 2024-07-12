@@ -275,7 +275,7 @@ export default function RaffleInfoBox({ raffleId }) {
                   <p className="font-roboto_slab pt-2 pb-2 border-t-2 border-b-2 w-full break-words text-center overflow-auto max-h-[200px] customizedScrollbar">
                     {raffleInfo.description}
                   </p>
-                  <button className="w-full">
+                  <button className="w-full textBtn">
                     <Link
                       className="w-full flex justify-center"
                       href={`https://testnets.opensea.io/assets/sepolia/${raffleInfo.prize}`}
@@ -291,7 +291,7 @@ export default function RaffleInfoBox({ raffleId }) {
                   <p>{`${formattedBalance(raffleInfo.prizeAmount)} ${
                     raffleInfo.name
                   }`}</p>
-                  <button className="w-full">
+                  <button className="w-full textBtn">
                     <Link
                       className="w-full flex justify-center"
                       href={`https://app.uniswap.org/swap?inputCurrency=${raffleInfo.prize}`}
@@ -320,7 +320,7 @@ export default function RaffleInfoBox({ raffleId }) {
                 <p>{`Created by`}</p>
                 <button>
                   <Link
-                    className="w-full flex"
+                    className="w-full flex textBtn"
                     href={`https://sepolia.etherscan.io/tx/${raffleInfo.txHash}`}
                     target="_blank"
                   >
@@ -449,7 +449,7 @@ export default function RaffleInfoBox({ raffleId }) {
                 <p className="font-roboto_slab pt-2 pb-2 border-t-2 border-b-2 break-words text-center overflow-auto max-h-[200px]  customizedScrollbar">
                   {raffleInfo.description}
                 </p>
-                <button className="w-full">
+                <button className="w-full textBtn">
                   <Link
                     className="w-full flex justify-center smallTile"
                     href={`https://testnets.opensea.io/assets/sepolia/${raffleInfo.prize}`}
@@ -465,7 +465,7 @@ export default function RaffleInfoBox({ raffleId }) {
                 <p>{`${formattedBalance(raffleInfo.prizeAmount)} ${
                   raffleInfo.name
                 }`}</p>
-                <button className="w-full">
+                <button className="w-full textBtn">
                   <Link
                     className="w-full flex justify-center"
                     href={`https://app.uniswap.org/swap?inputCurrency=${raffleInfo.prize}`}
@@ -491,9 +491,9 @@ export default function RaffleInfoBox({ raffleId }) {
               <div className="w-full flex justify-center gap-4"></div>
               <div className="flex w-full gap-1">
                 <p>{`Created by `}</p>
-                <button>
+                <button className="textBtn">
                   <Link
-                    className="text-highlight-color w-full flex"
+                    className="w-full flex"
                     href={`https://sepolia.etherscan.io/tx/${raffleInfo.txHash}`}
                     target="_blank"
                   >
