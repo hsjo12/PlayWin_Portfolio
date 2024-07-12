@@ -153,7 +153,12 @@ export const newestOrder = async (
   }
 };
 
-export const timeEndSoon = async (fromIndexForMain, offset, itemType) => {
+export const timeEndSoon = async (
+  fromIndexForMain,
+  offset,
+  itemType,
+  activeType
+) => {
   const raffle = getContractForReadOnly(raffleJson.address, raffleJson.abi);
 
   if (fromIndexForMain.noMoreLoadInTimeEndOrder) return [];
@@ -173,7 +178,12 @@ export const timeEndSoon = async (fromIndexForMain, offset, itemType) => {
 
     const promises = Array.from(allFetchedRaffleList).map(async (v, i) => {
       const raffleInfo = await raffle.raffleInfo(v.raffleId);
-      if (v.raffleId !== 0n && getItemType(itemType, raffleInfo.prizeType)) {
+
+      if (
+        v.raffleId !== 0n &&
+        getItemType(itemType, raffleInfo.prizeType) &&
+        getActiveType(activeType, raffleInfo.status)
+      ) {
         return {
           raffleId: v.raffleId,
           prize: raffleInfo.prize, // prize address
@@ -215,60 +225,4 @@ export const timeEndSoon = async (fromIndexForMain, offset, itemType) => {
   }
 
   return fetchedRaffleList;
-};
-
-export const timeEndSoonForInActiveRaffles = async (
-  fromIndexForMain,
-  offset,
-  itemType
-) => {
-  const raffleInstance = await getContractForReadOnly(
-    raffleJson.address,
-    raffleJson.abi
-  );
-
-  const inActiveRaffleListLength =
-    await raffleInstance.getInactiveRaffleListLength();
-  if (inActiveRaffleListLength === 0) return [];
-  if (Number(inActiveRaffleListLength) <= Number(fromIndexForMain.current))
-    return [];
-  let fetchedInActiveRaffleList = [];
-
-  while (true) {
-    const inactiveRaffleIds = await raffleInstance.getInactiveList(
-      fromIndexForMain.current,
-      offset
-    );
-
-    const promises = Array.from(inactiveRaffleIds).map(async (v, i) => {
-      const raffleInfo = await raffleInstance.raffleInfo(v);
-      if (v !== 0n && getItemType(itemType, raffleInfo.prizeType)) {
-        return {
-          raffleId: v,
-          prize: raffleInfo.prize, // prize address
-          prizeAmount: raffleInfo.prizeAmount,
-          prizeType: raffleInfo.prizeType,
-          prizeId: raffleInfo.prizeId, // if it is a nft
-          entryPrice: raffleInfo.entryPrice,
-          deadline: raffleInfo.deadline,
-          status: raffleInfo.status,
-        };
-      }
-      return null;
-    });
-
-    fetchedInActiveRaffleList = await Promise.all(
-      promises.filter((v) => v !== null)
-    );
-
-    fromIndexForMain.current = fromIndexForMain.current + offset;
-
-    if (
-      fetchedInActiveRaffleList.length >= offset ||
-      Number(inActiveRaffleListLength) <= Number(fromIndexForMain.current)
-    ) {
-      break;
-    }
-  }
-  return fetchedInActiveRaffleList;
 };

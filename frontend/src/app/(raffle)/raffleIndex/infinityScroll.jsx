@@ -37,30 +37,17 @@ export function InfinityScroll() {
 
         let fetchedRaffleList;
 
-        if (activeType === "Active") {
-          const currentLength = Number(await raffle.listLength());
-          if (raffleList.length >= currentLength) return setSafeGuard(false);
-          if (fromIndexForMain.noMoreLoadInTimeEndOrder)
-            return setSafeGuard(false);
+        const currentLength = Number(await raffle.listLength());
+        if (raffleList.length >= currentLength) return setSafeGuard(false);
+        if (fromIndexForMain.noMoreLoadInTimeEndOrder)
+          return setSafeGuard(false);
 
-          fetchedRaffleList = await timeEndSoon(
-            fromIndexForMain,
-            offset,
-            itemType
-          );
-        } else {
-          /// inActive
-          const currentLength = Number(
-            await raffle.getInactiveRaffleListLength()
-          );
-          if (raffleList.length >= currentLength) return setSafeGuard(false);
-
-          fetchedRaffleList = await timeEndSoonForInActiveRaffles(
-            fromIndexForMain,
-            offset,
-            itemType
-          );
-        }
+        fetchedRaffleList = await timeEndSoon(
+          fromIndexForMain,
+          offset,
+          itemType,
+          activeType
+        );
 
         fetchedRaffleList = [...raffleList, ...fetchedRaffleList];
         const uniqueRaffleMaps = new Map();

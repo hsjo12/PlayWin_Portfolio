@@ -3,7 +3,7 @@
 import Link from "next/link";
 import SelectOptions from "../selectOptions";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 export default function MyListingLayout({ children, params }) {
   const router = useRouter();

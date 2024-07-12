@@ -30,45 +30,61 @@ export default function MyListingList() {
       try {
         (async () => {
           if (sortType === "End time" || sortType == null) {
-            /// Initialize 0
-            fromIndexForMyListing.current = 0;
-            const userRaffleInfo = await fetchEndTimeMyListing(
-              address,
-              fromIndexForMyListing,
-              offset,
-              itemType,
-              activeType
-            );
-            setMyListingList(userRaffleInfo);
-            setIsLoading(false);
+            try {
+              /// Initialize 0
+              fromIndexForMyListing.current = 0;
+              const userRaffleInfo = await fetchEndTimeMyListing(
+                address,
+                fromIndexForMyListing,
+                offset,
+                itemType,
+                activeType
+              );
+              setMyListingList(userRaffleInfo);
+              setIsLoading(false);
+            } catch (error) {
+              setMyListingList([]);
+              setIsLoading(false);
+            }
           } else if (sortType === "Newest") {
-            /// Initialize 0
-            fromIndexForMyListing.current = 0;
-            const userRaffleInfo = await fetchNewestMyListing(
-              address,
-              fromIndexForMyListing,
-              offset,
-              itemType,
-              activeType
-            );
-            setMyListingList(userRaffleInfo);
-            setIsLoading(false);
+            try {
+              /// Initialize 0
+              fromIndexForMyListing.current = 0;
+              const userRaffleInfo = await fetchNewestMyListing(
+                address,
+                fromIndexForMyListing,
+                offset,
+                itemType,
+                activeType
+              );
+              setMyListingList(userRaffleInfo);
+              setIsLoading(false);
+            } catch (error) {
+              setMyListingList([]);
+              setIsLoading(false);
+            }
           } else {
-            /// Initialize 0
-            fromIndexForMyListing.current = 0;
-            const userRaffleInfo = await fetchOldestMyListing(
-              address,
-              fromIndexForMyListing,
-              offset,
-              itemType,
-              activeType
-            );
-            setMyListingList(userRaffleInfo);
-            setIsLoading(false);
+            try {
+              /// Initialize 0
+              fromIndexForMyListing.current = 0;
+              const userRaffleInfo = await fetchOldestMyListing(
+                address,
+                fromIndexForMyListing,
+                offset,
+                itemType,
+                activeType
+              );
+              setMyListingList(userRaffleInfo);
+              setIsLoading(false);
+            } catch (error) {
+              setMyListingList([]);
+              setIsLoading(false);
+            }
           }
         })();
       } catch (error) {
         console.log(error);
+        return;
       }
     }
   }, [address, isConnected, sortType, itemType, activeType]);

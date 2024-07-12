@@ -29,41 +29,60 @@ export default function MyEntryList() {
     else {
       (async () => {
         if (sortType === "End time" || sortType == null) {
-          /// Initialize 0
-          fromIndexForMyEntries.current = 0;
-          const userRaffleInfo = await fetchTimeEndEntryListOfMine(
-            address,
-            fromIndexForMyEntries,
-            offset,
-            itemType,
-            activeType
-          );
-          setMyEntryList(userRaffleInfo);
-          setIsLoading(false);
+          try {
+            /// Initialize 0
+            fromIndexForMyEntries.current = 0;
+            const userRaffleInfo = await fetchTimeEndEntryListOfMine(
+              address,
+              fromIndexForMyEntries,
+              offset,
+              itemType,
+              activeType
+            );
+            setMyEntryList(userRaffleInfo);
+            setIsLoading(false);
+          } catch (error) {
+            setMyEntryList([]);
+            setIsLoading(false);
+            console.log(error);
+          }
         } else if (sortType === "Newest") {
-          /// Initialize 0
-          fromIndexForMyEntries.current = 0;
-          const userRaffleInfo = await fetchNewestMyEntryList(
-            address,
-            fromIndexForMyEntries,
-            offset,
-            itemType,
-            activeType
-          );
-          setMyEntryList(userRaffleInfo);
-          setIsLoading(false);
+          try {
+            /// Initialize 0
+            fromIndexForMyEntries.current = 0;
+            const userRaffleInfo = await fetchNewestMyEntryList(
+              address,
+              fromIndexForMyEntries,
+              offset,
+              itemType,
+              activeType
+            );
+            setMyEntryList(userRaffleInfo);
+            setIsLoading(false);
+          } catch (error) {
+            setMyEntryList([]);
+            setIsLoading(false);
+            console.log(error);
+          }
         } else {
-          /// Initialize 0
-          fromIndexForMyEntries.current = 0;
-          const userRaffleInfo = await fetchOldestMyEntryList(
-            address,
-            fromIndexForMyEntries,
-            offset,
-            itemType,
-            activeType
-          );
-          setMyEntryList(userRaffleInfo);
-          setIsLoading(false);
+          // sortType === "oldest"
+          try {
+            /// Initialize 0
+            fromIndexForMyEntries.current = 0;
+            const userRaffleInfo = await fetchOldestMyEntryList(
+              address,
+              fromIndexForMyEntries,
+              offset,
+              itemType,
+              activeType
+            );
+            setMyEntryList(userRaffleInfo);
+            setIsLoading(false);
+          } catch (error) {
+            setMyEntryList([]);
+            setIsLoading(false);
+            console.log(error);
+          }
         }
       })();
     }

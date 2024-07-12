@@ -9,7 +9,6 @@ import {
   newestOrder,
   oldestOrder,
   timeEndSoon,
-  timeEndSoonForInActiveRaffles,
 } from "@/utils/fetch/raffleIndex";
 import Empty from "@/utils/empty";
 
@@ -26,28 +25,22 @@ export default function RaffleList() {
   const [isLoading, setIsLoading] = useState(null);
 
   useEffect(() => {
-    (async () => {
-      if (sortType === "End time" || sortType == null) {
-        let fetchedRaffleList;
+    let isMounted = true;
 
-        if (activeType === "Active") {
+    (async () => {
+      let fetchedRaffleList;
+      if (sortType === "End time" || sortType == null) {
+        try {
+          fromIndexForMain.current = 0;
           fetchedRaffleList = await timeEndSoon(
             fromIndexForMain,
             offset,
-            itemType
+            itemType,
+            activeType
           );
-        } else {
-          /// inActive
-          fetchedRaffleList = await timeEndSoonForInActiveRaffles(
-            fromIndexForMain,
-            offset,
-            itemType
-          );
-        }
-        if (raffleList !== null) {
-          setRaffleList([...raffleList, ...fetchedRaffleList]);
-        } else {
-          setRaffleList(fetchedRaffleList);
+        } catch (error) {
+          fetchedRaffleList = [];
+          console.error(error);
         }
       } else if (sortType === "Newest") {
         try {
@@ -56,56 +49,48 @@ export default function RaffleList() {
             RaffleJson.abi
           );
           fromIndexForMain.current = Number(await raffle.currentId());
-
-          const fetchedRaffleList = await newestOrder(
+          fetchedRaffleList = await newestOrder(
             fromIndexForMain,
             offset,
             itemType,
             activeType
           );
-
-          if (raffleList !== null) {
-            setRaffleList([...raffleList, ...fetchedRaffleList]);
-          } else {
-            setRaffleList(fetchedRaffleList);
-          }
         } catch (error) {
-          if (error.message.includes("NonExistence()")) {
-            setRaffleList([]);
-          } else {
-            console.error(error);
-          }
+          fetchedRaffleList = [];
+          console.error(error);
         }
       } else {
+        // sortType === "oldest"
         try {
-          // sortType === "oldest
           fromIndexForMain.current = 1; // the raffle id starts from 1
-          const fetchedRaffleList = await oldestOrder(
+          fetchedRaffleList = await oldestOrder(
             fromIndexForMain,
             offset,
             itemType,
             activeType
           );
-          if (raffleList !== null) {
-            setRaffleList([...raffleList, ...fetchedRaffleList]);
-          } else {
-            setRaffleList(fetchedRaffleList);
-          }
         } catch (error) {
-          if (error.message.includes("NonExistence()")) {
-            setRaffleList([]);
-          } else {
-            console.error(error);
-          }
+          fetchedRaffleList = [];
+          console.error(error);
         }
       }
-      setIsLoading(false);
+
+      if (isMounted) {
+        setRaffleList((prevList) =>
+          prevList ? [...prevList, ...fetchedRaffleList] : fetchedRaffleList
+        );
+        setIsLoading(false);
+      }
     })();
-  }, [sortType, itemType, fromIndexForMain, activeType, raffleList]);
+
+    return () => {
+      isMounted = false; // cleanup 함수: 컴포넌트가 언마운트되었음을 표시
+    };
+  }, [sortType, itemType, activeType, fromIndexForMain]);
 
   if (isLoading || raffleList == null) {
     return (
-      <div className="flex flex-col justify-center items-center w-full min-h-[40vh]">
+      <div className="flex flex-col justify-center items-center w-full min-h-[70vh]">
         <Loading loaderType="hugeLoader" />
       </div>
     );
