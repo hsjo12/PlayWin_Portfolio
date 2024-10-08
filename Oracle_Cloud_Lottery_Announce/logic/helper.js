@@ -20,6 +20,8 @@ const requestVRFNumber = async () => {
 
   const vrf = new ethers.Contract(VRF_ADDRESS, vrfJson.abi, user);
 
+  console.log(await lottery.isRoundOver());
+
   while (true) {
     if (await lottery.isRoundOver()) {
       break;
@@ -54,7 +56,9 @@ const announce = async () => {
   /// Try to fetch random number
   while (true) {
     console.log("try to fetch the round information", round);
+    console.log(round);
     _roundInfo = await vrf.roundInfo(round);
+    console.log(_roundInfo);
     console.log("_roundInfo.fulfilled", _roundInfo.fulfilled);
     if (_roundInfo.fulfilled) {
       break;
