@@ -73,13 +73,15 @@ const announce = async () => {
   const startingBlock = await lotteryContract.startingBlock();
   const intervalBlock = await lotteryContract.intervalBlock();
   const lastBlockOfCurrentRound = startingBlock + intervalBlock;
-
+  console.log(startingBlock, "startingBlock");
+  console.log(lastBlockOfCurrentRound, "lastBlockOfCurrentRound");
   const eventFilter = lotteryContract.filters.Buy(round, null, null);
   const events = await lotteryContract.queryFilter(
     eventFilter,
     startingBlock,
     lastBlockOfCurrentRound
   );
+  console.log("!!");
   const allTheSelectedNumbersInCurrentRound = events.map(
     (event) => event.args.selectedNumber
   );

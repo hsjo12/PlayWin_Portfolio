@@ -34,9 +34,15 @@ cron.schedule(
   }
 );
 
+// const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 // (async () => {
-//   console.log("REQUEST ANNOUNCEMENT");
-//   // await requestVRFNumber();
-//   await announce();
-//   console.log("ANNOUNCEMENT");
+//   await Array.from({ length: 8 }).reduce((promiseChain, _, index) => {
+//     return promiseChain.then(async () => {
+//       console.log(`REQUEST ANNOUNCEMENT ${index + 1}`);
+//       // await requestVRFNumber();
+//       await announce();
+//       console.log(`ANNOUNCEMENT ${index + 1}`);
+//       await delay(1000);
+//     });
+//   }, Promise.resolve());
 // })();
